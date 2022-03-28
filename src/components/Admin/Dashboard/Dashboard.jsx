@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AdminAuthAPI from "../../../services/AdminAuthAPI";
 
 // Components
 import Header from '../Header.jsx';
@@ -10,15 +9,10 @@ const Dashboard = () => {
         localStorage.getItem("adminAuth");
     }, []);
 
-    const handleLogout = () => {
-        AdminAuthAPI.logout();
-        window.location = "/admin-signin"
-    }
-
     return (
         <>
+            <Header />
             <div>Admin Dashboard</div>
-            <button onClick={handleLogout}>Log Out</button>
         </>
     )
 }

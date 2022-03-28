@@ -71,16 +71,13 @@ const Contact = () => {
       { fullname: fullname, email: email, phone: phone, message: message }
     )
       .then((res) => {
-        console.log(res.data.message)
         setGetFeedback(res.data.message)
       })
       .catch((err) => {
         setError(err.response.data.error);
-        console.log(error);
         setFullNameError(err.response.data.error.user.fullname)
         setEmailError(err.response.data.error.user.email)
         setMessageError(err.response.data.error.feedback.message)
-        console.log(err.response.data.error);
       })
   }
 

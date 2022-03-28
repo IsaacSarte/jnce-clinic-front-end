@@ -109,6 +109,10 @@
   border: none;
 }
 
+.createadminsvg {
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;

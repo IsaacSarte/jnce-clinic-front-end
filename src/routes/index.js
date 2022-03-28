@@ -7,20 +7,27 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Landing from '../pages/Landing';
 
 // Components
-
 import AuthRoutes from './AuthRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 
 import SignIn from '../components/Admin/Auth/SignIn.jsx';
-import Dashboard from '../components/Admin/Dashboard/Dashboard.jsx';
 
+/* Admin Routes */
+import Dashboard from '../components/Admin/Dashboard/Dashboard.jsx';
+import CreateAdmin from '../components/Admin/CreateAdmin/CreateAdmin.jsx';
+import UpdateAdmin from '../components/Admin/UpdateAdmin/UpdateAdmin.jsx';
+
+/* User Routes */
 
 const routes = () => {
     return (
         <Switch>
             <Route path="/" exact component={Landing} />
+            {/* Admin Routes */}
             <ProtectedRoutes path="/admin-signin" exact component={SignIn} />
             <AuthRoutes path="/admin-dashboard" exact component={Dashboard} />
+            <AuthRoutes path="/create-admin" exact component={CreateAdmin} />
+            <AuthRoutes path="/update-admin" exact component={UpdateAdmin} />
         </Switch>
     )
 }

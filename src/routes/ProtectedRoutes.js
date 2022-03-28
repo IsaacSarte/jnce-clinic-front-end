@@ -13,14 +13,32 @@ const ProtectedRoutes = ({ component: Component, ...rest }) => {
           return <Component {...props} />;
         } else {
           return (
-            <Redirect
-              to={{
-                pathname: "/admin-dashboard",
-                state: {
-                  from: props.location,
-                },
-              }}
-            />
+            <>
+              <Redirect
+                to={{
+                  pathname: "/admin-dashboard",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+              <Redirect
+                to={{
+                  pathname: "/create-admin",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+              <Redirect
+                to={{
+                  pathname: "/update-admin",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+            </>
           );
         }
       }}
