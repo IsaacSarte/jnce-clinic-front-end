@@ -11,6 +11,6 @@ const AdminAuthAPI = () => {
       isAuthenticated,
       logout,
     };
-  };
+};
   
-  export default AdminAuthAPI();
+export default AdminAuthAPI();

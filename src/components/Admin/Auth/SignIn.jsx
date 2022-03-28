@@ -38,7 +38,6 @@ const SignIn = () => {
             .then((res) => handleHeader(res))
             .catch((e) => {
                 setError(e.response.data.error);
-                console.log(e.response.data.error);
             })
     };
 
