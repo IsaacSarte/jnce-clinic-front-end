@@ -101,6 +101,14 @@
   width: 500px;
 }
 
+/* Admin */
+
+.admin__signin__container--form {
+  background-color: #f7f7f7;
+  outline: none;
+  border: none;
+}
+
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;
