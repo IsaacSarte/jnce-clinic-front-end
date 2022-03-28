@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 
 export const SuccessModal = (props) => {
 
-    const { getFeedback, setFullName, setEmail, setPhone, setMessage } = props;
+    const { getStatus, setEmail, setPassword } = props;
 
     const [open, setOpen] = useState(true)
 
@@ -11,7 +11,6 @@ export const SuccessModal = (props) => {
 
     const returnHome = () => {
         window.location.reload();
-        window.location = '#contact';
     }
 
     return (
@@ -53,7 +52,7 @@ export const SuccessModal = (props) => {
                                     </div>
                                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                         <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
-                                            {getFeedback}
+                                            {getStatus}
                                         </Dialog.Title>
                                     </div>
                                 </div>
@@ -62,7 +61,7 @@ export const SuccessModal = (props) => {
                                 <button
                                     type="button"
                                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                    onClick={() => (setOpen(false), setFullName(''), setEmail(''), setPhone('+63 '), setMessage(''), returnHome())}
+                                    onClick={() => (setOpen(false), setEmail(''), setPassword(''), returnHome())}
                                 >
                                     Okay
                                 </button>
