@@ -40,8 +40,8 @@ const solutions = [
         icon: AdminIcon,
     },
     {
-        name: 'Patients',
-        href: '#contact',
+        name: 'See Patients',
+        href: '/create-admin',
         icon: PatientIcon,
     }
 ]
@@ -160,11 +160,6 @@ const Header = () => {
                                     </>
                                 )}
                             </Popover>
-                            <a
-                                href="#contact"
-                                className="text-base font-medium text-gray-700 hover:text-gray-900 md:text-sm lg:text-xl">
-                                Patients
-                            </a>
 
                         </Popover.Group>
 
@@ -179,7 +174,7 @@ const Header = () => {
                                 href="#"
                                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                             >
-                                Appointment Logs
+                                See Patients
                             </a>
                         </div>
 
