@@ -109,7 +109,8 @@
   border: none;
 }
 
-.createadminsvg {
+.createadminsvg,
+.updateadminsvg {
   margin: 0 auto;
 }
 

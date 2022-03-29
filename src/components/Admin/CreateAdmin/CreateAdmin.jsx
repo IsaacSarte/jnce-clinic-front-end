@@ -47,7 +47,7 @@ const CreateAdmin = () => {
                     <div className="admin__signin__container--form max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
                         <div>
                             <LazyLoadImage
-                                className="createadminsvg w-72 md:w-40 custom:w-40"
+                                className="createadminsvg w-72 custom:w-40 md:w-40 lg:w-60"
                                 alt="admin svg"
                                 src={createadmin}
                             />
