@@ -18,7 +18,7 @@ const UpdateAdmin = () => {
     const [err, setErr] = useState([]);
     const [updateMessage, setUpdateMessage] = useState('');
     
-    const baseURL = 'http://127.0.0.1:3001';
+    const baseURL = process.env.JNCE_BASE_URL;
     const Identifier = localStorage.getItem("adminIdentifier");
     const Token = localStorage.getItem("adminAuth");
     useEffect(()=> {

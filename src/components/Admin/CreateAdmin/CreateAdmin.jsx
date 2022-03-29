@@ -21,7 +21,7 @@ const CreateAdmin = () => {
     const [password, setPassword] = useState("");
 
     const createAdmin = (e) => {
-        const url = 'http://127.0.0.1:3001/admins/';
+        const url = `${process.env.JNCE_BASE_URL}/admins/`;
         e.preventDefault();
 
         axios

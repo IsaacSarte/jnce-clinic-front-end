@@ -27,7 +27,7 @@ const SignIn = () => {
     };
 
     const signinAdmin = (e) => {
-        const url = 'http://127.0.0.1:3001/admins/sign_in';
+        const url = `${process.env.JNCE_BASE_URL}/admins/sign_in`;
         e.preventDefault();
 
         axios
