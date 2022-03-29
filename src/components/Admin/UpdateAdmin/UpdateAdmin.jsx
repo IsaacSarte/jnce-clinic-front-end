@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { SuccessModal }  from './SuccessModal'
+import { SuccessModal } from './SuccessModal'
 
 // Icons
 import createadmin from '../../../assets/svg/createadmin.svg';
@@ -17,11 +17,11 @@ const UpdateAdmin = () => {
     const [password, setPassword] = useState('');
     const [err, setErr] = useState([]);
     const [updateMessage, setUpdateMessage] = useState('');
-    
-    const baseURL = process.env.JNCE_BASE_URL;
+
+    const baseURL = process.env.REACT_APP_JNCE_BASE_URL;
     const Identifier = localStorage.getItem("adminIdentifier");
     const Token = localStorage.getItem("adminAuth");
-    useEffect(()=> {
+    useEffect(() => {
         const url = `${baseURL}/api/v1/admin/${Identifier}`;
         axios
             .get(url, {
@@ -29,12 +29,12 @@ const UpdateAdmin = () => {
                     Authorization: Token
                 }
             })
-            .then((res) =>  setEmail(res.data.email))
+            .then((res) => setEmail(res.data.email))
             .catch((e) => {
                 console.log(e)
             })
     }, [])
-    
+
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -112,14 +112,14 @@ const UpdateAdmin = () => {
                                     />
                                 </div>
                                 <div className="text-left">
-                                {err ? (
-                                    <span>{err.map((val, index) => (
-                                        <li className="list-none text-red-700 font-semibold my-1" key={index}>
-                                        <span>{`Password ${val}`}</span>
-                                        </li>
-                                    ))}</span>
+                                    {err ? (
+                                        <span>{err.map((val, index) => (
+                                            <li className="list-none text-red-700 font-semibold my-1" key={index}>
+                                                <span>{`Password ${val}`}</span>
+                                            </li>
+                                        ))}</span>
                                     ) : (
-                                    <span></span>
+                                        <span></span>
                                     )}
                                 </div>
                             </div>
@@ -131,9 +131,9 @@ const UpdateAdmin = () => {
                                 />
                                 {updateMessage ? (
                                     <SuccessModal
-                                    updateMessage={updateMessage}
-                                    setEmail={setEmail}
-                                    setPassword={setPassword}
+                                        updateMessage={updateMessage}
+                                        setEmail={setEmail}
+                                        setPassword={setPassword}
                                     />
                                 ) : (
                                     <></>

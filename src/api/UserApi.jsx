@@ -1,1 +1,1 @@
-export const createFeedbackURL = `${process.env.JNCE_BASE_URL}/api/v1/users`;
+export const createFeedbackURL = `${process.env.REACT_APP_JNCE_BASE_URL}/api/v1/users`;
