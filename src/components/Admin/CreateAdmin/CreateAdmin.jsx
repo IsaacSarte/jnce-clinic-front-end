@@ -21,7 +21,7 @@ const CreateAdmin = () => {
     const [password, setPassword] = useState("");
 
     const createAdmin = (e) => {
-        const url = `${process.env.JNCE_BASE_URL}/admins/`;
+        const url = `${process.env.REACT_APP_JNCE_BASE_URL}/admins/`;
         e.preventDefault();
 
         axios
