@@ -18,14 +18,16 @@ const SignIn = () => {
 
     const handleHeader = (res) => {
         if (res.data) {
-            localStorage.setItem("adminAuth", res.headers["authorization"]);
-
+            localStorage.setItem("adminAuth", res.headers["authorization"]);     
+            localStorage.setItem("adminIdentifier", res.data.data.id);     
             window.location = '/admin-dashboard';
+
+
         }
     };
 
     const signinAdmin = (e) => {
-        const url = 'http://127.0.0.1:3000/admins/sign_in';
+        const url = `${process.env.JNCE_BASE_URL}/admins/sign_in`;
         e.preventDefault();
 
         axios

@@ -5,6 +5,7 @@ const AdminAuthAPI = () => {
   
     const logout = () => {
       localStorage.removeItem("adminAuth");
+      localStorage.removeItem("adminIdentifier");
     };
   
     return {
