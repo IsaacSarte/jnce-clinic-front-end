@@ -21,7 +21,7 @@ const CreateAdmin = () => {
     const [password, setPassword] = useState("");
 
     const createAdmin = (e) => {
-        const url = 'http://127.0.0.1:3000/admins/';
+        const url = 'http://127.0.0.1:3001/admins/';
         e.preventDefault();
 
         axios
@@ -43,11 +43,11 @@ const CreateAdmin = () => {
         <>
             <Header />
             <div className="overflow-hidden">
-                <div className="admin__signin__container min-h-full flex items-center text-center justify-center py-12 px-4 custom:py-8 sm:px-6 lg:px-8">
+                <div className="admin__signin__container min-h-full flex items-center justify-center py-12 px-4 custom:py-8 sm:px-6 lg:px-8">
                     <div className="admin__signin__container--form max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
                         <div>
                             <LazyLoadImage
-                                className="createadminsvg w-72 custom:w-40"
+                                className="createadminsvg w-72 md:w-40 custom:w-40"
                                 alt="admin svg"
                                 src={createadmin}
                             />
