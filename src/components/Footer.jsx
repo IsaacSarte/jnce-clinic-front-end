@@ -56,32 +56,32 @@ const Footer = () => {
                 </span>
               </div>
               <div className="flex gap-4">
-                <div><a href="javascript:void(0)"><span><FacebookIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
-                <div><a href="javascript:void(0)"><span><YoutubeIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
-                <div><a href="javascript:void(0)"><span><MailIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
+                <div><a href="#"><span><FacebookIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
+                <div><a href="#"><span><YoutubeIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
+                <div><a href="#"><span><MailIcon className="h-7 w-7" aria-hidden="true" /></span></a></div>
               </div>
               <div><span>&nbsp;</span></div>
             </div>
             <div className="company flex flex-col gap-2">
               <div><span>COMPANY</span></div>
-              <div><a href="javascript:void(0)">About</a></div>
-              <div><a href="javascript:void(0)">Twitter</a></div>
-              <div><a href="javascript:void(0)">Blog</a></div>
+              <div><a href="#about">About</a></div>
+              <div><a href="#services">Services</a></div>
+              <div><a href="#">Blog</a></div>
               <div><span>&nbsp;</span></div>
             </div>
             <div className="product flex flex-col gap-2">
-              <div><span>PRODUCT</span></div>
-              <div><a href="javascript:void(0)">Pricing</a></div>
-              <div><a href="javascript:void(0)">Features</a></div>
-              <div><a href="javascript:void(0)">Templates</a></div>
+              <div><span>CONTACTS</span></div>
+              <div><a href="#">Pricing</a></div>
+              <div><a href="#">Features</a></div>
+              <div><a href="#">Templates</a></div>
               <div><span>&nbsp;</span></div>
             </div>
             <div className="resources flex flex-col gap-2">
               <div><span>RESOURCES</span></div>
-              <div><a href="javascript:void(0)">Testimonials</a></div>
-              <div><a href="javascript:void(0)">Support</a></div>
-              <div><a href="javascript:void(0)">Terms</a></div>
-              <div><a href="javascript:void(0)">Privacy</a></div>
+              <div><a href="#">Testimonials</a></div>
+              <div><a href="#">Support</a></div>
+              <div><a href="#">Terms</a></div>
+              <div><a href="#">Privacy</a></div>
             </div>
           </div>
         </div>

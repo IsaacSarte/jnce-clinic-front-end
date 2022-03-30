@@ -116,9 +116,9 @@ const SignIn = () => {
                             </div>
 
                             <div className="text-md custom:text-sm sm:text-md">
-                                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                <p className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
                                     Forgot your password?
-                                </a>
+                                </p>
                             </div>
                         </div>
 

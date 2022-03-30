@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 // Components
 import Header from '../Header.jsx';
 
-const Dashboard = () => {
+const ViewAppointments = () => {
 
     useEffect(() => {
         localStorage.getItem("adminAuth");
@@ -12,9 +12,9 @@ const Dashboard = () => {
     return (
         <>
             <Header />
-            <div>Admin Dashboard</div>
+            <div>All Appointments</div>
         </>
     )
 }
 
-export default Dashboard
+export default ViewAppointments;

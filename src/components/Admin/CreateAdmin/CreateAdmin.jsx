@@ -8,7 +8,7 @@ import createadmin from '../../../assets/svg/createadmin.svg';
 
 // Components
 import Header from '../Header.jsx';
-import { SuccessModal } from "../../../subComponents/Admin/SuccessModal.jsx";
+import { SuccessModal } from "./SuccessModal.jsx";
 
 const CreateAdmin = () => {
 
@@ -33,6 +33,7 @@ const CreateAdmin = () => {
             })
             .then((res) => {
                 setGetStatus(res.data.message)
+                console.log(res.data.message)
             })
             .catch((e) => {
                 setError(e.response.data.message)

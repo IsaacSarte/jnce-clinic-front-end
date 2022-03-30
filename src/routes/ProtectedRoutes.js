@@ -14,6 +14,7 @@ const ProtectedRoutes = ({ component: Component, ...rest }) => {
         } else {
           return (
             <>
+              {/* Admin Routes */}
               <Redirect
                 to={{
                   pathname: "/admin-dashboard",
@@ -33,6 +34,30 @@ const ProtectedRoutes = ({ component: Component, ...rest }) => {
               <Redirect
                 to={{
                   pathname: "/update-admin",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+              <Redirect
+                to={{
+                  pathname: "/view-patients",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+              <Redirect
+                to={{
+                  pathname: "/view-appointments",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+              <Redirect
+                to={{
+                  pathname: "/view-feedbacks",
                   state: {
                     from: props.location,
                   },

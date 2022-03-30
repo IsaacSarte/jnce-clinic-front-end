@@ -21,6 +21,7 @@ import mission from '../assets/svg/mission.svg';
 import vision from '../assets/svg/vision.svg';
 
 const About = () => {
+
     const { ref, inView } = useInView({
         threshold: 0.25
     });
@@ -59,6 +60,7 @@ const About = () => {
                 x: '100px'
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inView]);
 
     return (

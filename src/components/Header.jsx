@@ -68,7 +68,7 @@ const Header = () => {
                     <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
 
                         <div className="flex justify-start lg:w-0 lg:flex-1">
-                            <a href="#">
+                            <a href="/">
                                 <span className="sr-only">JNCE Medical Clinic</span>
                                 <LazyLoadImage
                                     className="h-14 w-auto sm:h-12"
@@ -112,13 +112,13 @@ const Header = () => {
 
                         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                             <a
-                                href="#"
+                                href="/"
                                 className="whitespace-nowrap text-base font-medium text-gray-800 hover:text-gray-900 md:text-sm lg:text-xl"
                             >
                                 Sign in
                             </a>
                             <a
-                                href="#"
+                                href="/"
                                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                             >
                                 Book Appointment
@@ -173,11 +173,11 @@ const Header = () => {
                             </div>
                             <div className="py-6 px-5 space-y-6">
                                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                                    <a href="/" className="text-base font-medium text-gray-900 hover:text-gray-700">
                                         Pricing
                                     </a>
 
-                                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                                    <a href="/" className="text-base font-medium text-gray-900 hover:text-gray-700">
                                         Docs
                                     </a>
                                     {resources.map((item) => (
@@ -192,7 +192,7 @@ const Header = () => {
                                 </div>
                                 <div>
                                     <a
-                                        href="#"
+                                        href="/"
                                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                                     >
                                         Book Appointment
@@ -200,7 +200,7 @@ const Header = () => {
                                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                                         Existing customer?{' '}
                                         <a
-                                            href="#"
+                                            href="/"
                                             className="text-green-700 hover:text-green-600"
                                         >
                                             Sign in

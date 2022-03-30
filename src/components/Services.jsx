@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import { HandIcon } from '../subComponents/AllSvg.jsx';
+
 // Framer Motion
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
-
-// SVG
-import 'boxicons';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -95,45 +94,45 @@ const Services = () => {
             <div className="flex flex-col sm:order-2 sm:pt-12 custom:order-2 custom:pt-12">
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Laboratory Facility</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Medical Consultation</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Electrocardiogram</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Dental Services</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Pre Employment Medical Examination</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Seafarer's Medical Examination</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-5 mb-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
+                <HandIcon />
                 <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">Ultrasound</h1>
               </motion.div>
 
               <motion.div animate={animationLeft} className="flex gap-4">
-                <box-icon name='hand-right' type='solid' color='#b2856a' size='md'></box-icon>
-                <div className="flex flex-col">    
+                <HandIcon />
+                <div className="flex flex-col">
                   <h1 animate={animationLeft} className="text-xl font-medium md:text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-2xl custom:text-lg">RTPCR Testing</h1>
-                  <a href="https://alliedmolecular.com/home/index" target="_blank">
+                  <a href="https://alliedmolecular.com/home/index" rel="noreferrer" target="_blank">
                     <small><span className="text-base text-blue-600 hover:text-green-400 sm:text-sm custom:text-sm">(in Partnership with Allied Molecular Laboratory)</span></small>
                   </a>
                 </div>
