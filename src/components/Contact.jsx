@@ -74,6 +74,7 @@ const Contact = () => {
         setGetFeedback(res.data.message)
       })
       .catch((err) => {
+        console.log(error)
         setError(err.response.data.error);
         setFullNameError(err.response.data.error.user.fullname)
         setEmailError(err.response.data.error.user.email)
@@ -190,7 +191,7 @@ const Contact = () => {
               <div className="contact__form--container flex justify-evenly sm:flex-col sm:justify-center custom:flex-col custom:justify-center">
                 <div className="w-1/2 px-2 sm:w-full custom:w-full">
                   <div className="text-gray-700 mb-4 w-full">
-                    <label className="block mb-1 text-green-600 font-bold" for="name">Full Name</label>
+                    <label className="block mb-1 text-green-600 font-bold" htmlFor="name">Full Name</label>
                     <input value={fullname} onChange={(e) => setFullName(e.target.value)} className="w-full h-10 px-3 py-6 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="name" placeholder='full name' required />
                     {fullnameError ? (
                       <span>{fullnameError.map((fullnameErr, index) => (
@@ -203,7 +204,7 @@ const Contact = () => {
                     )}
                   </div>
                   <div className="text-gray-700 mb-4 w-full">
-                    <label className="block mb-1 text-green-600 font-bold" for="email">Your email</label>
+                    <label className="block mb-1 text-green-600 font-bold" htmlFor="email">Your email</label>
                     <input value={email} onChange={(e) => setEmail(e.target.value)} className="w-full h-10 px-3 py-6 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="email" id="email" placeholder="valid email" required />
                     {emailError ? (
                       <span>{emailError.map((emailErr, index) => (
@@ -216,13 +217,13 @@ const Contact = () => {
                     )}
                   </div>
                   <div className="text-gray-700 mb-4 w-full">
-                    <label className="block mb-1 text-green-600 font-bold" for="phone">Phone</label>
+                    <label className="block mb-1 text-green-600 font-bold" htmlFor="phone">Phone</label>
                     <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full h-10 px-3 py-6 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="phone" id="phone" placeholder='contact number' required />
                   </div>
                 </div>
                 <div className="w-1/2 px-2 sm:w-full custom:w-full">
                   <div className="text-gray-700 mb-4 w-full">
-                    <label className="block mb-1 text-green-600 font-bold" for="message">Message</label>
+                    <label className="block mb-1 text-green-600 font-bold" htmlFor="message">Message</label>
                     <textarea value={message} onChange={(e) => setMessage(e.target.value)} id="message" className="w-full h-[240px] px-3 py-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Leave your concern......" required></textarea>
                     {messageError ? (
                       <span>{messageError.map((messageErr, index) => (

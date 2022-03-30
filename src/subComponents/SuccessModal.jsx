@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 export const SuccessModal = (props) => {
@@ -10,8 +10,12 @@ export const SuccessModal = (props) => {
     const cancelButtonRef = useRef(null)
 
     const returnHome = () => {
+        setOpen(false);
+        setFullName('');
+        setEmail('');
+        setPhone('+63 ');
+        setMessage('');
         window.location.reload();
-        window.location = '#contact';
     }
 
     return (
@@ -62,7 +66,7 @@ export const SuccessModal = (props) => {
                                 <button
                                     type="button"
                                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                    onClick={() => (setOpen(false), setFullName(''), setEmail(''), setPhone('+63 '), setMessage(''), returnHome())}
+                                    onClick={() => (returnHome())}
                                 >
                                     Okay
                                 </button>

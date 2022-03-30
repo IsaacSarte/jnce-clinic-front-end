@@ -27,6 +27,7 @@ const images = [
 ];
 
 const Home = () => {
+
   const { ref, inView } = useInView({
     threshold: 0.5
   });
@@ -45,6 +46,7 @@ const Home = () => {
         opacity: 0
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
   return (

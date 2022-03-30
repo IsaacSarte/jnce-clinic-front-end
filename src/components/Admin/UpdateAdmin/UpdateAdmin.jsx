@@ -21,6 +21,7 @@ const UpdateAdmin = () => {
     const baseURL = process.env.REACT_APP_JNCE_BASE_URL;
     const Identifier = localStorage.getItem("adminIdentifier");
     const Token = localStorage.getItem("adminAuth");
+
     useEffect(() => {
         const url = `${baseURL}/api/v1/admin/${Identifier}`;
         axios
@@ -33,6 +34,7 @@ const UpdateAdmin = () => {
             .catch((e) => {
                 console.log(e)
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import AdminAuthAPI from "../../services/AdminAuthAPI";
 import { Popover, Transition } from '@headlessui/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -26,12 +28,12 @@ import jnce_logo from '../../assets/images/jnce-logo.png';
 const solutions = [
     {
         name: 'Feedbacks',
-        href: '#feedbacks',
+        href: '/view-feedbacks',
         icon: FeedbackIcon,
     },
     {
         name: 'Appointments',
-        href: '#appointments',
+        href: '/view-appointments',
         icon: AppointmentIcon,
     },
     {
@@ -41,7 +43,7 @@ const solutions = [
     },
     {
         name: 'See Patients',
-        href: '/create-admin',
+        href: '/view-patients',
         icon: PatientIcon,
     }
 ]
@@ -80,14 +82,14 @@ const Header = () => {
                     <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
 
                         <div className="flex justify-start lg:w-0 lg:flex-1">
-                            <a href="#">
+                            <NavLink to="/admin-dashboard">
                                 <span className="sr-only">JNCE Medical Clinic</span>
                                 <LazyLoadImage
                                     className="h-14 w-auto sm:h-12"
                                     alt="JNCE Logo"
                                     src={jnce_logo}
                                 />
-                            </a>
+                            </NavLink>
                         </div>
 
                         <div className="-mr-2 -my-2 md:hidden">
@@ -99,16 +101,16 @@ const Header = () => {
 
                         <Popover.Group as="nav" className="hidden md:flex space-x-10">
 
-                            <a
-                                href="#feedbacks"
+                            <NavLink
+                                to="/view-feedbacks"
                                 className="text-base font-medium text-gray-700 hover:text-gray-900 md:text-sm lg:text-xl">
                                 Feedbacks
-                            </a>
-                            <a
-                                href="#appointments"
+                            </NavLink>
+                            <NavLink
+                                to="/view-appointments"
                                 className="text-base font-medium text-gray-700 hover:text-gray-900 md:text-sm lg:text-xl">
                                 Appointments
-                            </a>
+                            </NavLink>
                             <Popover className="relative">
                                 {({ open }) => (
                                     <>
@@ -141,9 +143,9 @@ const Header = () => {
                                                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                                     <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                                         {admins.map((item) => (
-                                                            <a
+                                                            <NavLink
                                                                 key={item.name}
-                                                                href={item.href}
+                                                                to={item.href}
                                                                 className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                                             >
                                                                 <item.icon className="flex-shrink-0 h-6 w-6 text-green-700" aria-hidden="true" />
@@ -151,7 +153,7 @@ const Header = () => {
                                                                     <p className="text-base font-medium text-gray-900">{item.name}</p>
                                                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                                                 </div>
-                                                            </a>
+                                                            </NavLink>
                                                         ))}
                                                     </div>
                                                 </div>
@@ -164,18 +166,18 @@ const Header = () => {
                         </Popover.Group>
 
                         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                            <a
+                            <p
                                 onClick={handleLogout}
                                 className=" cursor-pointer whitespace-nowrap text-base font-medium text-gray-800 hover:text-gray-900 md:text-sm lg:text-xl"
                             >
                                 Sign out
-                            </a>
-                            <a
-                                href="#"
+                            </p>
+                            <NavLink
+                                to="/view-patients"
                                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                             >
                                 See Patients
-                            </a>
+                            </NavLink>
                         </div>
 
                     </div>
@@ -226,19 +228,19 @@ const Header = () => {
                             </div>
                             <div className="py-6 px-5 space-y-6">
                                 <div>
-                                    <a
-                                        href="#"
+                                    <NavLink
+                                        to="/view-patients"
                                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                                     >
-                                        Appointment Logs
-                                    </a>
+                                        See Patients
+                                    </NavLink>
                                     <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                        <a
+                                        <p
                                             onClick={handleLogout}
                                             className="text-green-700 hover:text-green-600"
                                         >
                                             Sign out
-                                        </a>
+                                        </p>
                                     </p>
                                 </div>
                             </div>
