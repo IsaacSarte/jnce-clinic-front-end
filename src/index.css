@@ -114,6 +114,16 @@
   margin: 0 auto;
 }
 
+.google__login svg{
+  display: none;
+}
+
+.google__login span{
+  color: green;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;

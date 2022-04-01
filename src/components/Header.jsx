@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { GoogleLogin } from 'react-google-login'
 
 // Icons
 import { MenuIcon } from '../subComponents/AllSvg.jsx'; // for Menubar on Header
@@ -57,7 +58,17 @@ const resources = [
     }
 ]
 
+
 const Header = () => {
+
+    const responseGoogle = response => {
+        console.log(response)
+    }
+
+    const responseError = error => {
+        console.log(error)
+    }
+
     return (
         <header className="header__container sticky top-0">
 
@@ -117,12 +128,19 @@ const Header = () => {
                             >
                                 Sign in
                             </a>
-                            <a
-                                href="/"
-                                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
-                            >
-                                Book Appointment
-                            </a>
+                            
+                            <GoogleLogin
+                                className='google__login ml-8'
+                                clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                buttonText='Book Appointment'
+                                onSuccess={responseGoogle}
+                                onFailure={responseError}
+                                cookiePolicy={'single_host_origin'}
+                                theme='light'
+                                responseType='code'
+                                accessType='offline'
+                                scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
+                            />
                         </div>
 
                     </div>
@@ -191,12 +209,24 @@ const Header = () => {
                                     ))}
                                 </div>
                                 <div>
-                                    <a
+                                    {/* <a
                                         href="/"
                                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-700 hover:bg-green-800"
                                     >
                                         Book Appointment
-                                    </a>
+                                    </a> */}
+                                    <GoogleLogin
+                                        className='google__login w-full grid grid-cols-3 justify-center'
+                                        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                        buttonText='Book Appointment'
+                                        onSuccess={responseGoogle}
+                                        onFailure={responseError}
+                                        cookiePolicy={'single_host_origin'}
+                                        theme='light'
+                                        responseType='code'
+                                        accessType='offline'
+                                        scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
+                                    />
                                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                                         Existing customer?{' '}
                                         <a
