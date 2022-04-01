@@ -114,6 +114,11 @@
   margin: 0 auto;
 }
 
+.feedback__table {
+  width: 100%;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;
