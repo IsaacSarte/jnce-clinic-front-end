@@ -63,6 +63,14 @@ const ProtectedRoutes = ({ component: Component, ...rest }) => {
                   },
                 }}
               />
+              <Redirect
+                to={{
+                  pathname: "/show-feedback",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
             </>
           );
         }
