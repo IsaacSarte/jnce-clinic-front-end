@@ -20,23 +20,6 @@ const ViewFeedbacks = () => {
                 }
             })
             .then((res) =>
-                console.log(res.data.data)
-            )
-            .catch((e) => {
-                console.log(e)
-            })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        const Token = localStorage.getItem("adminAuth");
-        axios
-            .get(getFeedbackURL, {
-                headers: {
-                    Authorization: Token
-                }
-            })
-            .then((res) =>
                 setGetFeedbacks(res.data.data)
             )
             .catch((e) => {

@@ -5,7 +5,6 @@ import Header from '../Header.jsx';
 const ShowFeedback = () => {
 
     const userData = JSON.parse(localStorage.getItem("userIdentifier"));
-    console.log(userData);
 
     return (
         <>
