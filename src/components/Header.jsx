@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { GoogleLogin } from 'react-google-login'
+
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 
 // Icons
 import { MenuIcon } from '../subComponents/AllSvg.jsx'; // for Menubar on Header
@@ -62,6 +64,13 @@ const Header = () => {
 
     const responseGoogle = response => {
         console.log(response)
+        const { code } = response
+        axios
+            .post('api/create-tokens', { code })
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => console.log(error.message))
     }
 
     const responseError = response => {
@@ -207,18 +216,18 @@ const Header = () => {
                                     ))}
                                 </div>
                                 <div>
-                                <GoogleLogin
-                                    className='google__login w-full flex justify-center'
-                                    clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
-                                    buttonText='Book Appointment'
-                                    onSuccess={responseGoogle}
-                                    onFailure={responseError}
-                                    cookiePolicy={'single_host_origin'}
-                                    theme='light'
-                                    responseType='code'
-                                    accessType='offline'
-                                    scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
-                                />
+                                    <GoogleLogin
+                                        className='google__login w-full flex justify-center'
+                                        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                        buttonText='Book Appointment'
+                                        onSuccess={responseGoogle}
+                                        onFailure={responseError}
+                                        cookiePolicy={'single_host_origin'}
+                                        theme='light'
+                                        responseType='code'
+                                        accessType='offline'
+                                        scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
+                                    />
                                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                                         Existing customer?{' '}
                                         <a

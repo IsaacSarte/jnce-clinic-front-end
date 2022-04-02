@@ -36,7 +36,7 @@ const Contact = () => {
   // Add Feedback State
   const [fullname, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('+63 ');
+  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
   // Status
@@ -47,6 +47,7 @@ const Contact = () => {
   const [fullnameError, setFullNameError] = useState([]);
   const [emailError, setEmailError] = useState([]);
   const [messageError, setMessageError] = useState([]);
+  const [phoneError, setPhoneError] = useState([]);
 
   // useEffect(() => {
   //   axios.get(createFeedbackURL)
@@ -78,6 +79,7 @@ const Contact = () => {
         setError(err.response.data.error);
         setFullNameError(err.response.data.error.user.fullname)
         setEmailError(err.response.data.error.user.email)
+        setPhoneError(err.response.data.error.user.phone)
         setMessageError(err.response.data.error.feedback.message)
       })
   }
@@ -219,6 +221,15 @@ const Contact = () => {
                   <div className="text-gray-700 mb-4 w-full">
                     <label className="block mb-1 text-green-600 font-bold" htmlFor="phone">Phone</label>
                     <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full h-10 px-3 py-6 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="phone" id="phone" placeholder='contact number' required />
+                    {phoneError ? (
+                      <span>{phoneError.map((phoneErr, index) => (
+                        <li className="list-none text-red-700 font-semibold my-1" key={index}>
+                          <span>{`Phone ${phoneErr}`}</span>
+                        </li>
+                      ))}</span>
+                    ) : (
+                      <span></span>
+                    )}
                   </div>
                 </div>
                 <div className="w-1/2 px-2 sm:w-full custom:w-full">
