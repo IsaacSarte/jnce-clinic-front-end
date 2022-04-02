@@ -20,7 +20,7 @@ import ViewFeedbacks from '../components/Admin/ViewFeedbacks/ViewFeedbacks';
 import ViewPatients from '../components/Admin/ViewPatients/ViewPatients';
 import ViewAppointments from '../components/Admin/ViewAppointments/ViewAppointments';
 import ShowFeedback from '../components/Admin/ViewFeedbacks/ShowFeedback';
-
+import Appointment from '../components/User/Appointment';
 
 /* User Routes */
 
@@ -37,6 +37,7 @@ const routes = () => {
             <AuthRoutes path="/view-appointments" exact component={ViewAppointments} />
             <AuthRoutes path="/view-feedbacks" exact component={ViewFeedbacks} />
             <AuthRoutes path="/show-feedback" exact component={ShowFeedback} />
+            <Route path="/create-event" exact component={Appointment} />
         </Switch>
     )
 }

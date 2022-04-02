@@ -68,7 +68,8 @@ const Header = () => {
         axios
             .post('api/create-tokens', { code })
             .then(response => {
-                console.log(response.data)
+                localStorage.setItem('calendarOAuth', JSON.stringify(response))
+                window.location = '/create-event'
             })
             .catch(error => console.log(error.message))
     }
@@ -132,7 +133,7 @@ const Header = () => {
                         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                             <a
                                 href="/"
-                                className="whitespace-nowrap text-base font-medium text-gray-800 hover:text-gray-900 md:text-sm lg:text-xl"
+                                className="whitespace-nowrap hidden text-base font-medium text-gray-800 hover:text-gray-900 md:text-sm lg:text-xl"
                             >
                                 Sign in
                             </a>
@@ -218,7 +219,7 @@ const Header = () => {
                                 <div>
                                     <GoogleLogin
                                         className='google__login w-full flex justify-center'
-                                        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                        id='login'                                        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
                                         buttonText='Book Appointment'
                                         onSuccess={responseGoogle}
                                         onFailure={responseError}
@@ -228,7 +229,7 @@ const Header = () => {
                                         accessType='offline'
                                         scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
                                     />
-                                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                                    <p className="mt-6 text-center text-base font-medium text-gray-500 hidden">
                                         Existing customer?{' '}
                                         <a
                                             href="/"
