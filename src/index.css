@@ -119,6 +119,10 @@
   margin: 0 auto;
 }
 
+.feedback__table__show {
+  margin: 0 auto;
+}
+
 .google__login svg{
   display: none;
 }
