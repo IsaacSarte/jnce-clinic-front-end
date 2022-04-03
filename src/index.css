@@ -123,14 +123,22 @@
   margin: 0 auto;
 }
 
-.google__login svg{
+.google__login {
+  background-color: #15803d !important;
+  border: none !important;
+  outline: none !important;
+  border-radius: 7.5px !important;
+  padding: 0 1rem !important;
+}
+
+.google__login>div{
   display: none;
 }
 
-.google__login span{
-  color: green;
-  font-size: 1.2rem;
-  text-align: center;
+.google__login>span{
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 0.75rem;
 }
 
 @media screen and (max-width: 768px) {
