@@ -138,7 +138,7 @@ const Header = () => {
                                 Sign in
                             </a>
                             <GoogleLogin
-                                className='google__login ml-8'
+                                className='google__login'
                                 clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
                                 buttonText='Book Appointment'
                                 onSuccess={responseGoogle}
@@ -219,7 +219,7 @@ const Header = () => {
                                 <div>
                                     <GoogleLogin
                                         className='google__login w-full flex justify-center'
-                                        id='login'                                        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                        id='login' clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
                                         buttonText='Book Appointment'
                                         onSuccess={responseGoogle}
                                         onFailure={responseError}

@@ -9,6 +9,8 @@ import Landing from '../pages/Landing';
 // Components
 import AuthRoutes from './AuthRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
+import UserAuthRoutes from './UserAuthRoutes';
+import UserProtectedRoutes from './UserProtectedRoutes';
 
 import SignIn from '../components/Admin/Auth/SignIn.jsx';
 
@@ -37,7 +39,9 @@ const routes = () => {
             <AuthRoutes path="/view-appointments" exact component={ViewAppointments} />
             <AuthRoutes path="/view-feedbacks" exact component={ViewFeedbacks} />
             <AuthRoutes path="/show-feedback" exact component={ShowFeedback} />
-            <Route path="/create-event" exact component={Appointment} />
+            {/* User Routes */}
+            <UserProtectedRoutes path="/" exact component={Landing} />
+            <UserAuthRoutes path="/create-event" exact component={Appointment} />
         </Switch>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import AdminAuthAPI from "../services/AdminAuthAPI";
+import UserAuthAPI from "../services/UserAuthAPI";
 
 const AuthRoutes = ({ component: Component, ...rest }) => {
   return (
@@ -9,14 +9,14 @@ const AuthRoutes = ({ component: Component, ...rest }) => {
       <Route
         {...rest}
         render={(props) => {
-          if (AdminAuthAPI.isAuthenticated()) {
+          if (UserAuthAPI.isAuthenticated()) {
             return <Component {...props} />;
           } else {
             return (
               <>
                 <Redirect
                   to={{
-                    pathname: "/admin-signin",
+                    pathname: "/",
                     state: {
                       from: props.location,
                     },
