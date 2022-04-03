@@ -11,6 +11,8 @@ const ViewFeedbacks = () => {
     const [getFeedbacks, setGetFeedbacks] = useState([]);
     const [showFeedbacks, setShowFeedbacks] = useState([]);
 
+    let feedbackDate;
+
     useEffect(() => {
         const Token = localStorage.getItem("adminAuth");
         axios
@@ -19,8 +21,10 @@ const ViewFeedbacks = () => {
                     Authorization: Token
                 }
             })
-            .then((res) =>
-                setGetFeedbacks(res.data.data)
+            .then((res) => {
+                console.log(res);
+                setGetFeedbacks(res.data.data);
+            }
             )
             .catch((e) => {
                 console.log(e)
@@ -58,9 +62,9 @@ const ViewFeedbacks = () => {
 
             <br /><br />
 
-            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg custom:max-w-sm">
+            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-3/4">
                 <table className="w-full text-left">
-                    <thead className="text-lg bg-slate-300 rounded text-black font-semibold uppercase">
+                    <thead className="text-lg bg-green-300 rounded text-black font-semibold uppercase">
                         <tr className="text-md">
                             <th scope="col" className="px-6 py-3">
                                 Email Address
@@ -75,13 +79,13 @@ const ViewFeedbacks = () => {
                                 Date
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                <span className="sr-only">View</span>
+                                Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+                        {getFeedbacks.length ? (
 
-                        {
                             getFeedbacks.map((value, index) => (
                                 <tr className="bg-white border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-green-800 dark:hover:text-white">
                                     <td className="px-6 py-4">
@@ -94,9 +98,13 @@ const ViewFeedbacks = () => {
                                         <strong>+{value.attributes.phone}</strong>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <strong>{value.attributes.feedback[0].created_at}</strong>
+                                        <strong>
+                                            {
+                                                feedbackDate = new Date(value.attributes.feedback[0].created_at).toLocaleDateString("en-US")
+                                            }
+                                        </strong>
                                     </td>
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-6 py-4">
                                         <p id={`${value.id}`} className="cursor-pointer font-bold text-lg transition-all duration-75 ease-in hover:scale-110 uppercase"
                                             onClick={handleMessage}
                                         >
@@ -105,7 +113,12 @@ const ViewFeedbacks = () => {
                                     </td>
                                 </tr>
                             ))
-                        }
+
+                        ) : (
+                            <>
+                                <td className="text-center font-bold text-lg p-8" colspan="5">No User Feedback Record Found !</td>
+                            </>
+                        )}
                     </tbody>
                 </table>
             </div>

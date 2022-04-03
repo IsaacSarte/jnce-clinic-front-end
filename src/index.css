@@ -154,6 +154,11 @@
 }
 
 @media screen and (max-width: 639px) {
+  .feedback__table,
+  .feedback__table__show {
+    width: 90%;
+  }
+
   .info__container {
     flex-direction: column;
   }
