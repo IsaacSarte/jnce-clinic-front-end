@@ -76,7 +76,6 @@ const Header = () => {
         axios
             .post('api/create-tokens', { code })
             .then(response => {
-                console.log(response.profileObj)
                 localStorage.setItem('calendarOAuth', JSON.stringify(response))
                 window.location = '/create-event'
             })
