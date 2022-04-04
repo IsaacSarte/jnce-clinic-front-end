@@ -136,7 +136,7 @@ const ViewAppointments = () => {
 
                         ) : (
                             <>
-                                <td className="text-center font-bold text-lg p-8" colspan="5">No record found!</td>
+                                <td className="text-center font-bold text-lg p-8" colspan="7">No record found!</td>
                             </>
                         )}
                     </tbody>
