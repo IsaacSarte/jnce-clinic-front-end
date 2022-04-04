@@ -241,18 +241,27 @@ const Header = () => {
                                     ))}
                                 </div>
                                 <div>
-                                    <GoogleLogin
-                                        className='google__login w-full flex justify-center'
-                                        id='login' clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
-                                        buttonText='Book Appointment'
-                                        onSuccess={responseGoogle}
-                                        onFailure={responseError}
-                                        cookiePolicy={'single_host_origin'}
-                                        theme='light'
-                                        responseType='code'
-                                        accessType='offline'
-                                        scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
-                                    />
+                                    {userToken !== null ? (
+                                        <button
+                                            className="user__signed__in__btn w-full flex justify-center bg-green-700 text-white font-semibold hover:bg-green-600"
+                                            onClick={responseUserAuth}
+                                        >
+                                            Book Appointment
+                                        </button>
+                                    ) : (
+                                        <GoogleLogin
+                                            className='google__login w-full flex justify-center'
+                                            id='login' clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                            buttonText='Book Appointment'
+                                            onSuccess={responseGoogle}
+                                            onFailure={responseError}
+                                            cookiePolicy={'single_host_origin'}
+                                            theme='light'
+                                            responseType='code'
+                                            accessType='offline'
+                                            scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
+                                        />
+                                    )}
                                     <p className="mt-6 text-center text-base font-medium text-gray-500 hidden">
                                         Existing customer?{' '}
                                         <a
