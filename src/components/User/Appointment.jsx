@@ -15,16 +15,16 @@ const Appointment = () => {
   const [startDateTime, setStartDateTime] = useState('');
   const [endDateTime, setEndDateTime] = useState('');
   const [appointment, setAppointment] = useState('');
- 
+
 
   const token_res = JSON.parse(localStorage.getItem('calendarOAuth'))
   const token = `${token_res.data.id_token}`
   const { decodedToken } = useJwt(token)
-  
+
 
   const hanleSubmitEvent = (e) => {
     e.preventDefault()
-  
+
     const access_token = `${token_res.data.access_token}`
     axios.post('api/create-event', {
       title,
@@ -47,7 +47,7 @@ const Appointment = () => {
     <div>
       <form onSubmit={hanleSubmitEvent}>
 
-      <label htmlFor='email'>Email:</label><br />
+        <label htmlFor='email'>Email:</label><br />
         <input type="text"
           id="email"
           value={decodedToken ? decodedToken.email : ''}
