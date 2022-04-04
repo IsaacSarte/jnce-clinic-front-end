@@ -1,24 +1,31 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { SuccessModal } from './SuccessModal';
+import { useJwt } from "react-jwt";
 
 const Appointment = () => {
 
   /* State Management */
+
+
   const [fullname, setFullname] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [startDateTime, setStartDateTime] = useState('');
   const [endDateTime, setEndDateTime] = useState('');
-
   const [appointment, setAppointment] = useState('');
+ 
+
+  const token_res = JSON.parse(localStorage.getItem('calendarOAuth'))
+  const token = `${token_res.data.id_token}`
+  const { decodedToken } = useJwt(token)
+  
 
   const hanleSubmitEvent = (e) => {
     e.preventDefault()
-    const token_res = JSON.parse(localStorage.getItem('calendarOAuth'))
+  
     const access_token = `${token_res.data.access_token}`
-
     axios.post('api/create-event', {
       title,
       description,
@@ -39,6 +46,13 @@ const Appointment = () => {
   return (
     <div>
       <form onSubmit={hanleSubmitEvent}>
+
+      <label htmlFor='email'>Email:</label><br />
+        <input type="text"
+          id="email"
+          value={decodedToken ? decodedToken.email : ''}
+          disabled
+        /> <br />
 
         <label htmlFor='fullname'>Fullname:</label><br />
         <input type="text"
