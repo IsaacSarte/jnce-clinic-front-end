@@ -5,6 +5,7 @@ import Header from '../Header.jsx';
 const ShowFeedback = () => {
 
     const userData = JSON.parse(localStorage.getItem("userIdentifier"));
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let feedbackDate;
 
     return (
@@ -36,7 +37,7 @@ const ShowFeedback = () => {
                             <dt className="text-lg font-medium text-gray-800">Date</dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
                                 {
-                                    feedbackDate = new Date(userData.attributes.feedback[0].created_at).toLocaleDateString("en-US")
+                                    feedbackDate = new Date(userData.attributes.feedback[0].created_at).toLocaleDateString("en-US", options)
                                 }
                             </dd>
                         </div>
