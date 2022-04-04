@@ -10,7 +10,7 @@ const ViewFeedbacks = () => {
 
     const [getFeedbacks, setGetFeedbacks] = useState([]);
     const [showFeedbacks, setShowFeedbacks] = useState([]);
-
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let feedbackDate;
 
     useEffect(() => {
@@ -100,7 +100,7 @@ const ViewFeedbacks = () => {
                                     <td className="px-6 py-4">
                                         <strong>
                                             {
-                                                feedbackDate = new Date(value.attributes.feedback[0].created_at).toLocaleDateString("en-US")
+                                                feedbackDate = new Date(value.attributes.feedback[0].created_at).toLocaleDateString("en-US", options)
                                             }
                                         </strong>
                                     </td>
