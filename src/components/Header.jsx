@@ -62,16 +62,30 @@ const resources = [
 
 const Header = () => {
 
+    const userToken = localStorage.getItem('calendarOAuth');
+
+    userToken !== null ?
+        console.log('UserToken: exists') :
+        console.log('UserToken: null');
+
     const responseGoogle = response => {
+
         console.log(response)
+
         const { code } = response
         axios
             .post('api/create-tokens', { code })
             .then(response => {
+                console.log(response.profileObj)
                 localStorage.setItem('calendarOAuth', JSON.stringify(response))
                 window.location = '/create-event'
             })
             .catch(error => console.log(error.message))
+
+    }
+
+    const responseUserAuth = () => {
+        window.location = '/create-event'
     }
 
     const responseError = response => {
@@ -137,18 +151,29 @@ const Header = () => {
                             >
                                 Sign in
                             </a>
-                            <GoogleLogin
-                                className='google__login'
-                                clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
-                                buttonText='Book Appointment'
-                                onSuccess={responseGoogle}
-                                onFailure={responseError}
-                                cookiePolicy={'single_host_origin'}
-                                theme='light'
-                                responseType='code'
-                                accessType='offline'
-                                scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
-                            />
+                            {userToken !== null ? (
+                                <button
+                                    className="user__signed__in__btn bg-green-700 text-white font-semibold hover:bg-green-600"
+                                    onClick={responseUserAuth}
+                                >
+                                    Book Appointment
+                                </button>
+                            ) : (
+                                <GoogleLogin
+                                    className='google__login'
+                                    clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+                                    buttonText='Book Appointment'
+                                    onSuccess={responseGoogle}
+                                    fetchBasicProfile
+                                    onFailure={responseError}
+                                    cookiePolicy={'single_host_origin'}
+                                    theme='light'
+                                    responseType='code'
+                                    accessType='offline'
+                                    scope={`openid email profile ${process.env.REACT_APP_GOOGLE_CALENDAR_URL}`}
+                                />
+                            )}
+
                         </div>
 
                     </div>
