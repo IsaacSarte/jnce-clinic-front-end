@@ -3,6 +3,9 @@ import axios from 'axios'
 
 // Components
 import Header from '../Header.jsx';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 const ViewAppointments = () => {
 
@@ -48,9 +51,35 @@ const ViewAppointments = () => {
             })
     }
 
-    const handleChangeStatus = () => {
-        console.log('1 rows affected')
-    }
+    const handleChangeStatus = (e) => {
+        let id = e.target.id
+        confirmAlert({
+            title: 'Are you sure ?',
+            message: 'This action takes appointment well done.',
+            buttons: [
+                {
+                label: 'Yes',
+                onClick: () => {
+                    axios
+                    .put(`${url}/${id}`, {
+                        status: 'done'
+                    })
+                    .then((res) => {
+                        localStorage.setItem('statusmsg', JSON.stringify(res.data.message))
+                        window.location.reload()
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+                }
+                },
+                {
+                label: 'No',
+                onClick: () => alert('Click No')
+                }
+            ]
+            });
+        };
 
     return (
         <>
