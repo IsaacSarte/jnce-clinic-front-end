@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import axios from 'axios'
 
@@ -8,6 +8,12 @@ import { createAppointmentURL, getServicesURL } from '../../api/UserApi';
 /* Components */
 import Header from './Header';
 import { SuccessModal } from './SuccessModal'; // appointment created successfully modal component
+
+// Multi Step Form
+import { Stepper, StepLabel, Step } from '@material-ui/core';
+import Profile from '../../subComponents/User/CreateAppointment/Profile';
+import ServicePicker from '../../subComponents/User/CreateAppointment/ServicePicker';
+import DatePicker from '../../subComponents/User/CreateAppointment/DatePicker';
 
 const Appointment = () => {
 
@@ -62,10 +68,72 @@ const Appointment = () => {
       .catch(err => console.log(err))
   }
 
+  const [currentStep, setCurrentStep] = useState(1);
+
+  console.log('Current Step: ' + currentStep);
+
+  const showStep = (step) => {
+    switch (step) {
+      case 1:
+        return <Profile
+          decodedToken={decodedToken}
+          fullname={fullname}
+          setFullname={setFullname}
+          title={title}
+          setCurrentStep={setCurrentStep}
+        />
+
+      case 2:
+        return <ServicePicker
+          description={description}
+          setDescription={setDescription}
+          services={services}
+          setCurrentStep={setCurrentStep}
+        />
+
+      case 3:
+        return <DatePicker
+          location={location}
+          startDateTime={startDateTime}
+          setStartDateTime={setStartDateTime}
+          setEndDateTime={setEndDateTime}
+          setCurrentStep={setCurrentStep}
+        />
+    }
+  }
+
   return (
     <>
       <Header />
+      {/* First Step */}
+      <br /><br />
+      <h1 className="text-center text-2xl"><strong>Schedule a JNCE Medical Clinic Service Right Now</strong></h1>
+      <br />
       <form onSubmit={hanleSubmitEvent}>
+        <Stepper className="stepper w-1/2" activeStep={currentStep - 1} orientation="horizontal">
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+        </Stepper>
+        {
+          appointment ? (
+            <SuccessModal
+              appointment={appointment}
+            />
+          ) : (
+            null
+          )
+        }
+        {showStep(currentStep)}
+      </form>
+
+      {/* <form onSubmit={hanleSubmitEvent}>
 
         <label htmlFor='email'>Email:</label><br />
         <p>{decodedToken ? decodedToken.email : ''}</p>
@@ -127,7 +195,7 @@ const Appointment = () => {
             null
           )
         }
-      </form >
+      </form > */}
     </>
   )
 }

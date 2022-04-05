@@ -123,6 +123,8 @@
   margin: 0 auto;
 }
 
+/* User */
+
 .google__login {
   background-color: #15803d !important;
   border: none !important;
@@ -149,6 +151,19 @@
   margin-left: 0.75rem;
 }
 
+.stepper {
+  margin: 0 auto;
+}
+
+.profile__form {
+  margin: 0 auto;
+  background-color: #f7f7f7;
+}
+
+.fullname-input::placeholder {
+  color: #0b0b0b;
+}
+
 .react-confirm-alert-button-group{
   display:flex;
   justify-content: center;
@@ -166,6 +181,13 @@
 
 .react-confirm-alert-button-group > button:hover {
   background: #16a34a;
+}
+
+.MuiStepper-horizontal {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
 }
 
 
@@ -210,6 +232,9 @@
 
   .st-2 h1 {
     text-align: end;
+  }
+  .profile__form {
+    width: 90%;
   }
 }
 
