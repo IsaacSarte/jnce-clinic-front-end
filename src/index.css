@@ -149,6 +149,26 @@
   margin-left: 0.75rem;
 }
 
+.react-confirm-alert-button-group{
+  display:flex;
+  justify-content: center;
+  gap:2.5rem;
+}
+
+.react-confirm-alert-body > h1 {
+  font-weight: bold;
+}
+
+.react-confirm-alert-button-group > button {
+  background: #22c55e;
+  width: 5rem;
+}
+
+.react-confirm-alert-button-group > button:hover {
+  background: #16a34a;
+}
+
+
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;
