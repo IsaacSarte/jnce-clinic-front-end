@@ -107,7 +107,8 @@ const Appointment = () => {
       <Header />
       {/* First Step */}
       <br /><br />
-      <h1 className="text-center text-xl"><strong>Schedule a JNCE Medical Clinic Service Right Now</strong></h1>
+      <h1 className="text-center text-2xl"><strong>Schedule a JNCE Medical Clinic Service Right Now</strong></h1>
+      <br />
       <form onSubmit={hanleSubmitEvent}>
         <Stepper className="stepper w-1/2" activeStep={currentStep - 1} orientation="horizontal">
           <Step>
