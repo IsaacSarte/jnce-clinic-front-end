@@ -4,6 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
+import { createAppointmentURL } from '../api/UserApi.jsx';
 
 // Icons
 import { MenuIcon } from '../subComponents/AllSvg.jsx'; // for Menubar on Header
@@ -62,15 +63,6 @@ const resources = [
 
 const Header = () => {
 
-    useEffect(() => {
-        axios
-            .get('https://testcal.vercel.app/api/test')
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => console.log(error))
-    }, [])
-
     const userToken = localStorage.getItem('calendarOAuth');
 
     userToken !== null ?
@@ -83,7 +75,7 @@ const Header = () => {
 
         const { code } = response
         axios
-            .post('https://testcal.vercel.app/api/test/create-tokens', { code })
+            .post(`${createAppointmentURL}/create-tokens`, { code })
             .then(response => {
                 localStorage.setItem('calendarOAuth', JSON.stringify(response))
                 window.location = '/create-event'

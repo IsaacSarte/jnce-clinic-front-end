@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 import { useJwt } from "react-jwt";
-import { getServicesURL } from '../../api/UserApi';
+import { createAppointmentURL, getServicesURL } from '../../api/UserApi';
 
 /* Components */
 import Header from './Header';
@@ -47,7 +47,7 @@ const Appointment = () => {
     e.preventDefault()
 
     const access_token = `${token_res.data.access_token}`
-    axios.post('https://testcal.vercel.app/api/test/create-event', {
+    axios.post(`${createAppointmentURL}/create-event`, {
       title,
       description,
       location,

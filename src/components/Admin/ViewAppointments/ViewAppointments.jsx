@@ -7,26 +7,26 @@ import Header from '../Header.jsx';
 const ViewAppointments = () => {
 
     const [getAppointments, setAppointments] = useState([]);
-    const url = 'http://127.0.0.1:3001/api/v1/appointments'
-    const Token =  localStorage.getItem("adminAuth");
+    const url = `${process.env.REACT_APP_JNCE_BASE_URL}/api/v1/appointments`;
+    const Token = localStorage.getItem("adminAuth");
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateFormat;
 
     useEffect(() => {
-    
+
         axios
-        .get(url, {
-            headers: {
-                Authorization: Token
+            .get(url, {
+                headers: {
+                    Authorization: Token
+                }
+            })
+            .then((res) => {
+                setAppointments(res.data.data);
             }
-        })
-        .then((res) => {
-            setAppointments(res.data.data);
-        }
-        )
-        .catch((err) => {
-            console.log(err)
-        })
+            )
+            .catch((err) => {
+                console.log(err)
+            })
 
     }, []);
 
@@ -82,7 +82,7 @@ const ViewAppointments = () => {
                             <th scope="col" className="px-6 py-3 text-center" colspan="2">
                                 Action
                             </th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -130,7 +130,7 @@ const ViewAppointments = () => {
                                             Done
                                         </p>
                                     </td>
-                                    
+
                                 </tr>
                             ))
 
