@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
+import { createAppointmentURL } from '../api/UserApi.jsx';
 
 // Icons
 import { MenuIcon } from '../subComponents/AllSvg.jsx'; // for Menubar on Header
@@ -74,7 +75,7 @@ const Header = () => {
 
         const { code } = response
         axios
-            .post('api/create-tokens', { code })
+            .post(`${createAppointmentURL}/create-tokens`, { code })
             .then(response => {
                 localStorage.setItem('calendarOAuth', JSON.stringify(response))
                 window.location = '/create-event'
