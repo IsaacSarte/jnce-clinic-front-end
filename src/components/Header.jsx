@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -62,6 +62,15 @@ const resources = [
 
 const Header = () => {
 
+    useEffect(() => {
+        axios
+            .get('https://testcal.vercel.app/api/test')
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
     const userToken = localStorage.getItem('calendarOAuth');
 
     userToken !== null ?
@@ -74,7 +83,7 @@ const Header = () => {
 
         const { code } = response
         axios
-            .post('api/create-tokens', { code })
+            .post('https://testcal.vercel.app/api/test/create-tokens', { code })
             .then(response => {
                 localStorage.setItem('calendarOAuth', JSON.stringify(response))
                 window.location = '/create-event'

@@ -47,7 +47,7 @@ const Appointment = () => {
     e.preventDefault()
 
     const access_token = `${token_res.data.access_token}`
-    axios.post('api/create-event', {
+    axios.post('https://testcal.vercel.app/api/test/create-event', {
       title,
       description,
       location,
