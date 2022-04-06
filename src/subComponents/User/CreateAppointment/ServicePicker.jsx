@@ -2,7 +2,7 @@ import React from 'react';
 
 const ServicePicker = (props) => {
 
-    const { description, setDescription, services, setCurrentStep } = props;
+    const { description, description_id, setDescriptionID, setDescription, services, setCurrentStep } = props;
 
     return (
         <>
@@ -12,10 +12,10 @@ const ServicePicker = (props) => {
 
                 <select
                     name="services"
-                    id="services"
+                    id = {description_id}
                     className="select-input border border-gray-300 text-gray-900 text-sm rounded-lg block pl-10 p-2.5 custom:w-full"
                     value={description}
-                    onChange={e => setDescription(e.target.value)}
+                    onChange={e => (setDescription(e.target.value), setDescriptionID(e.target.selectedIndex))}
                 >
                     <option value="" selected disabled hidden>--Service Type--</option>
                     {services.length ? (

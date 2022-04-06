@@ -86,7 +86,7 @@ const ViewAppointments = () => {
             <Header />
             <br /><br />
 
-            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg rounded-md">
+            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-left">
                     <thead className="text-md bg-green-300 rounded text-black font-semibold capitalize">
                         <tr className="text-md">
