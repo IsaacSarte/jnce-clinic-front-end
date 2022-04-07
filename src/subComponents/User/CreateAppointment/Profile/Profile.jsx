@@ -54,7 +54,7 @@ const Profile = (props) => {
                         Confirm Profile
                     </button>
                     {profileError ? (
-                        <ErrorFnModal 
+                        <ErrorFnModal
                             profileError={profileError}
                         />
                     ) : (

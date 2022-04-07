@@ -14,8 +14,9 @@ import Footer from './Footer';
 // Multi Step Form
 import { Stepper, StepLabel, Step } from '@material-ui/core';
 import Profile from '../../subComponents/User/CreateAppointment/Profile/Profile';
-import ServicePicker from '../../subComponents/User/CreateAppointment/ServicePicker';
-import DatePicker from '../../subComponents/User/CreateAppointment/DatePicker';
+import ServicePicker from '../../subComponents/User/CreateAppointment/ServicePicker/ServicePicker';
+import DatePicker from '../../subComponents/User/CreateAppointment/DatePicker/DatePicker';
+import { NoDateModal } from '../../subComponents/User/CreateAppointment/DatePicker/NoDateModal';
 
 const Appointment = () => {
 
@@ -35,6 +36,7 @@ const Appointment = () => {
 
   /* Error Handlers */
   const [errorDate, setErrorDate] = useState('');
+  const [noDateError, setNoDateError] = useState('');
 
   // Decrypting JWT
   const token_res = JSON.parse(localStorage.getItem('calendarOAuth'));
@@ -62,8 +64,10 @@ const Appointment = () => {
 
     if (startdateFormat < currentDate) {
       setErrorDate("Oops, past date/s are not allowed");
+    }
+    else if (currentStep === 3 && !startDateTime) {
+      setNoDateError("Schedule date is required.")
     } else {
-
       const access_token = `${token_res.data.access_token}`
       axios.post(`${createAppointmentURL}/create-event`, {
         title,
@@ -161,6 +165,11 @@ const Appointment = () => {
             errorDate ? (
               <ErrorModal
                 errorDate={errorDate}
+              />
+
+            ) : noDateError ? (
+              <NoDateModal
+                noDateError={noDateError}
               />
             ) : null
           )
