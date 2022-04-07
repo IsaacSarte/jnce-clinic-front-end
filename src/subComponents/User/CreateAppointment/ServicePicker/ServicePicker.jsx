@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+/* Components */
+import { ErrorFnModal } from './ErrorFnModal';
 
 const ServicePicker = (props) => {
 
     const { description, description_id, setDescriptionID, setDescription, services, setCurrentStep } = props;
+
+    const [serviceError, setServiceError] = useState('');
+
+    const handleService = () => {
+        description ? setCurrentStep(3) : setServiceError("Service Type can't be blank!");
+    }
 
     return (
         <>
@@ -43,11 +52,18 @@ const ServicePicker = (props) => {
                         Go Back
                     </button>
                     <button
-                        onClick={() => setCurrentStep(3)}
+                        onClick={handleService}
                         className="bg-green-700 text-white font-semibold p-4 duration-75 hover:bg-green-800 rounded-md custom: text-md whitespace-nowrap"
                     >
                         Confirm Service Type
                     </button>
+                    {serviceError ? (
+                        <ErrorFnModal
+                            serviceError={serviceError}
+                        />
+                    ) : (
+                        null
+                    )}
                 </div>
 
             </div>
