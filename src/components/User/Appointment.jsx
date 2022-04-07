@@ -15,12 +15,14 @@ import Profile from '../../subComponents/User/CreateAppointment/Profile';
 import ServicePicker from '../../subComponents/User/CreateAppointment/ServicePicker';
 import DatePicker from '../../subComponents/User/CreateAppointment/DatePicker';
 
+
 const Appointment = () => {
 
   /* State Management */
   const [fullname, setFullname] = useState('');
   const [title, setTitle] = useState('JNCE Medical Clinic Appointment');
   const [description, setDescription] = useState('');
+  const [description_id, setDescriptionID] = useState(0);
   const [location, setLocation] = useState('G/F CDC Bldg. 1195 Ma. Orosa St., Ermita Manila');
 
   const [startDateTime, setStartDateTime] = useState('');
@@ -51,21 +53,44 @@ const Appointment = () => {
 
   const hanleSubmitEvent = (e) => {
     e.preventDefault()
+    const currentDate = new Date().toLocaleDateString()
+    const startdateFormat = new Date(startDateTime).toLocaleDateString()
 
-    const access_token = `${token_res.data.access_token}`
-    axios.post(`${createAppointmentURL}/create-event`, {
-      title,
-      description,
-      location,
-      startDateTime,
-      endDateTime,
-      access_token
-    })
-      .then(res => {
-        console.log(res.data);
-        setAppointment('You are Successfully Scheduled!');
+    if (startdateFormat < currentDate) {
+      alert("Oops, you've entered invalid dates")
+    } else {
+    
+      const access_token = `${token_res.data.access_token}`
+      axios.post(`${createAppointmentURL}/create-event`, {
+        title,
+        description,
+        location,
+        startDateTime,
+        endDateTime,
+        access_token
       })
-      .catch(err => console.log(err))
+        .then(res => {
+          console.log(res.data);
+      
+          axios.post(`${process.env.REACT_APP_JNCE_BASE_URL}/api/v1/appointments`, {
+            service_id: description_id,
+            status: 'pending',
+            fullname: fullname,
+            location: location,
+            start_datetime: startDateTime,
+            end_datetime: endDateTime,
+            title: title,
+            email: decodedToken.email
+          }).then(res => {
+            console.log(res)
+              setAppointment('You are Successfully Scheduled!');
+
+          }).catch(err => console.log(err))
+
+        })
+        .catch(err => console.log(err))
+    }
+  
   }
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -89,6 +114,8 @@ const Appointment = () => {
           setDescription={setDescription}
           services={services}
           setCurrentStep={setCurrentStep}
+          description_id={description_id}
+          setDescriptionID={setDescriptionID}
         />
 
       case 3:
@@ -133,69 +160,6 @@ const Appointment = () => {
         {showStep(currentStep)}
       </form>
 
-      {/* <form onSubmit={hanleSubmitEvent}>
-
-        <label htmlFor='email'>Email:</label><br />
-        <p>{decodedToken ? decodedToken.email : ''}</p>
-        <br />
-
-        <label htmlFor='fullname'>Fullname:</label><br />
-        <input type="text"
-          id="fullname"
-          value={fullname}
-          onChange={e => setFullname(e.target.value)}
-        /> <br />
-
-        <label htmlFor='title'>Title:</label><br />
-        <p>{title}</p>
-        <br />
-
-        <label htmlFor='services'>Choose Service Type:</label><br />
-        <select
-          name="services"
-          id="services"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        >
-          <option value="" selected disabled hidden>---</option>
-          {services.length ? (
-            services.map((value, index) => (
-              <option id={value.id}>{value.attributes.name}</option>
-            ))
-          ) : (
-            <>
-              <td className="text-center font-bold text-lg p-8" colspan="5">No Services Record Found at this Moment <br /> Please try again later.</td>
-            </>
-          )}
-        </select>
-
-        <br /><br />
-
-        <label htmlFor='location'>Location:</label><br />
-        <p>{location}</p>
-        <br />
-
-        <label htmlFor='startDateTime'>Choose Date:</label><br />
-        <input type="datetime-local"
-          id="startDateTime"
-          value={startDateTime}
-          onChange={e => (setStartDateTime(e.target.value), setEndDateTime(e.target.value))}
-        /><br /><br />
-
-        <input
-          type="submit"
-          value="Schedule Appointment"
-        />
-        {
-          appointment ? (
-            <SuccessModal
-              appointment={appointment}
-            />
-          ) : (
-            null
-          )
-        }
-      </form > */}
     </>
   )
 }

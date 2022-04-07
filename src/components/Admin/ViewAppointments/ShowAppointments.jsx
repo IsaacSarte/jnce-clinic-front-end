@@ -6,7 +6,7 @@ const ShowAppointments = () => {
 
     
     const data = JSON.parse(localStorage.getItem("appointment_identifier"));
-    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     let dateFormat;
 
 

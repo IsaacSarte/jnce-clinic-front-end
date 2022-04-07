@@ -105,7 +105,7 @@ const ViewFeedbacks = () => {
                                         </strong>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-lg transition-all duration-75 ease-in hover:scale-110 uppercase"
+                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-center text-blue-400 hover:text-green-300 transition-all duration-75 ease-in hover:scale-110 capitalize"
                                             onClick={handleMessage}
                                         >
                                             View
