@@ -9,13 +9,13 @@ import { createAppointmentURL, getServicesURL } from '../../api/UserApi';
 import Header from './Header';
 import { SuccessModal } from './SuccessModal'; // appointment created successfully modal component
 import { ErrorModal } from './ErrorModal'; // appointment with error modal component
+import Footer from './Footer';
 
 // Multi Step Form
 import { Stepper, StepLabel, Step } from '@material-ui/core';
-import Profile from '../../subComponents/User/CreateAppointment/Profile';
+import Profile from '../../subComponents/User/CreateAppointment/Profile/Profile';
 import ServicePicker from '../../subComponents/User/CreateAppointment/ServicePicker';
 import DatePicker from '../../subComponents/User/CreateAppointment/DatePicker';
-
 
 const Appointment = () => {
 
@@ -167,7 +167,7 @@ const Appointment = () => {
         }
         {showStep(currentStep)}
       </form>
-
+      <Footer />
     </>
   )
 }

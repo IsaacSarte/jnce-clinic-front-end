@@ -235,7 +235,7 @@ const Contact = () => {
                 <div className="w-1/2 px-2 sm:w-full custom:w-full">
                   <div className="text-gray-700 mb-4 w-full">
                     <label className="block mb-1 text-green-600 font-bold" htmlFor="message">Message</label>
-                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} id="message" className="w-full h-[240px] px-3 py-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Leave your concern......" required></textarea>
+                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} id="message" className="w-full h-[240px] px-3 py-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg resize-none focus:shadow-outline" placeholder="Leave your concern......" required></textarea>
                     {messageError ? (
                       <span>{messageError.map((messageErr, index) => (
                         <li className="list-none text-red-700 font-semibold my-1" key={index}>

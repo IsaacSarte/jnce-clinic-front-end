@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ErrorFnModal } from './ErrorFnModal';
 
 const Profile = (props) => {
 
     const { decodedToken, fullname, setFullname, title, setCurrentStep } = props;
 
+    const [profileError, setProfileError] = useState('');
+
+    const handleProfile = () => {
+        fullname ? setCurrentStep(2) : setProfileError("Fullname can't be blank!");
+    }
+
     return (
         <>
-            <div className="profile__form max-w-3xl p-16 mt-16 rounded-md relative">
+            <div className="profile__form max-w-3xl shadow-lg p-16 mt-16 rounded-md relative">
 
                 <p className="font-semibold text-xl">{title}</p>
                 <br />
@@ -41,11 +48,18 @@ const Profile = (props) => {
 
                 <div className="flex justify-end">
                     <button
-                        onClick={() => setCurrentStep(2)}
+                        onClick={handleProfile}
                         className="bg-green-700 text-white font-semibold p-4 duration-75 hover:bg-green-800 rounded-md"
                     >
                         Confirm Profile
                     </button>
+                    {profileError ? (
+                        <ErrorFnModal 
+                            profileError={profileError}
+                        />
+                    ) : (
+                        null
+                    )}
                 </div>
             </div>
             <br /><br />

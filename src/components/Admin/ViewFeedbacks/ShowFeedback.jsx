@@ -14,7 +14,7 @@ const ShowFeedback = () => {
 
             <br /><br />
 
-            <div className="feedback__table__show bg-green-300 max-w-7xl shadow overflow-hidden sm:rounded-lg md:w-3/4">
+            <div className="feedback__table__show bg-green-300 max-w-7xl shadow overflow-hidden sm:rounded-lg w-[90%] md:w-[90%]">
                 <div className="px-4 py-5 sm:px-6">
                     <h3 className="text-xl leading-6 font-bold uppercase text-black">User Feedback Details</h3>
                     <p className="mt-1 max-w-2xl text-md font-semibold text-gray-900">Personal Details</p>

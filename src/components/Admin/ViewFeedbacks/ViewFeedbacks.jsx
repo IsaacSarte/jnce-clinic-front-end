@@ -62,10 +62,16 @@ const ViewFeedbacks = () => {
 
             <br /><br />
 
-            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-3/4">
+            <div className="user__feedback--title max-w-7xl md:w-[90%]">
+                <h1 className="text-left font-bold text-2xl custom:text-lg">All User Feedback</h1>
+            </div>
+
+            <br />
+
+            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-[90%]">
                 <table className="w-full text-left">
                     <thead className="text-lg bg-green-300 rounded text-black font-semibold capitalize">
-                        <tr className="text-md">
+                        <tr className="text-md whitespace-nowrap">
                             <th scope="col" className="px-6 py-3">
                                 Email Address
                             </th>
@@ -87,7 +93,7 @@ const ViewFeedbacks = () => {
                         {getFeedbacks.length ? (
 
                             getFeedbacks.map((value, index) => (
-                                <tr className="bg-white border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-green-800 dark:hover:text-white">
+                                <tr className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
                                     <td className="px-6 py-4">
                                         <strong>{value.attributes.email}</strong>
                                     </td>
@@ -98,14 +104,14 @@ const ViewFeedbacks = () => {
                                         <strong>{value.attributes.phone}</strong>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <strong>
+                                        <strong className="whitespace-nowrap">
                                             {
                                                 feedbackDate = new Date(value.attributes.feedback[0].created_at).toLocaleDateString("en-US", options)
                                             }
                                         </strong>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-center text-blue-400 hover:text-green-300 transition-all duration-75 ease-in hover:scale-110 capitalize"
+                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
                                             onClick={handleMessage}
                                         >
                                             View

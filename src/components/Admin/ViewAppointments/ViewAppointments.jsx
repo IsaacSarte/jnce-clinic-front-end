@@ -6,7 +6,6 @@ import Header from '../Header.jsx';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-
 const ViewAppointments = () => {
 
     const [getAppointments, setAppointments] = useState([]);
@@ -58,35 +57,42 @@ const ViewAppointments = () => {
             message: 'This action takes appointment well done.',
             buttons: [
                 {
-                label: 'Yes',
-                onClick: () => {
-                    axios
-                    .put(`${url}/${id}`, {
-                        status: 'done'
-                    })
-                    .then((res) => {
-                        localStorage.setItem('statusmsg', JSON.stringify(res.data.message))
-                        window.location.reload()
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-                }
+                    label: 'Yes',
+                    onClick: () => {
+                        axios
+                            .put(`${url}/${id}`, {
+                                status: 'done'
+                            })
+                            .then((res) => {
+                                localStorage.setItem('statusmsg', JSON.stringify(res.data.message))
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
+                        window.location.reload();
+                    }
                 },
                 {
-                label: 'No',
-                onClick: () => alert('Click No')
+                    label: 'No',
+                    onClick: () => alert('Click No')
                 }
             ]
-            });
-        };
+        });
+    };
 
     return (
         <>
             <Header />
+
             <br /><br />
 
-            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="user__feedback--title max-w-7xl md:w-[90%]">
+                <h1 className="text-left font-bold text-2xl custom:text-lg">All JNCE Appointments</h1>
+            </div>
+
+            <br />
+
+            <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-[90%]">
                 <table className="w-full text-left">
                     <thead className="text-md bg-green-300 rounded text-black font-semibold capitalize">
                         <tr className="text-md">
@@ -103,7 +109,7 @@ const ViewAppointments = () => {
                                 Scheduled Date
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Date
+                                Date Booked
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Status
@@ -118,7 +124,7 @@ const ViewAppointments = () => {
                         {getAppointments.length ? (
 
                             getAppointments.map((value, index) => (
-                                <tr className="bg-white border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-green-800 dark:hover:text-white">
+                                <tr className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
                                     <td className="px-6 py-4 text-sm">
                                         <strong>{value.attributes.email}</strong>
                                     </td>
@@ -129,35 +135,43 @@ const ViewAppointments = () => {
                                         <strong>{value.attributes.service.name}</strong>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <strong>
+                                        <strong className="whitespace-nowrap">
                                             {
                                                 dateFormat = new Date(value.attributes["start-datetime"]).toLocaleDateString("en-US", options)
                                             }
                                         </strong>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <strong>
+                                        <strong className="whitespace-nowrap">
                                             {
                                                 dateFormat = new Date(value.attributes["created-at"]).toLocaleDateString("en-US", options)
                                             }
                                         </strong>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <strong>{value.attributes.status}</strong>
+                                        {value.attributes.status === 'pending' ? (
+                                            <strong className="text-yellow-700">{value.attributes.status}</strong>
+                                        ) : (
+                                            <strong className="text-green-700">{value.attributes.status}</strong>
+                                        )}
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-400 hover:text-green-300 transition-all duration-75 ease-in hover:scale-110 capitalize"
+                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
                                             onClick={handleAppointment}
                                         >
                                             View
                                         </p>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-400 hover:text-green-300 transition-all duration-75 ease-in hover:scale-110 capitalize"
-                                            onClick={handleChangeStatus}
-                                        >
-                                            Done
-                                        </p>
+                                        {value.attributes.status === 'pending' ? (
+                                            <span id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
+                                                onClick={handleChangeStatus}
+                                            >
+                                                Done
+                                            </span>
+                                        ) : (
+                                            <span></span>
+                                        )}
                                     </td>
 
                                 </tr>

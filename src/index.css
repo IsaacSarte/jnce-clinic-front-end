@@ -105,12 +105,15 @@
 
 .admin__signin__container--form {
   background-color: #f7f7f7;
-  outline: none;
-  border: none;
 }
 
 .createadminsvg,
 .updateadminsvg {
+  margin: 0 auto;
+}
+
+.user__feedback--title {
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -209,11 +212,17 @@
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
   }
+
+  .feedback__table,
+  .user__feedback--title {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 639px) {
   .feedback__table,
-  .feedback__table__show {
+  .feedback__table__show,
+  .user__feedback--title {
     width: 90%;
   }
 

@@ -9,6 +9,7 @@ import createadmin from '../../../assets/svg/createadmin.svg';
 // Components
 import Header from '../Header.jsx';
 import { SuccessModal } from "./SuccessModal.jsx";
+import Footer from "../Footer";
 
 const CreateAdmin = () => {
 
@@ -47,7 +48,7 @@ const CreateAdmin = () => {
             <Header />
             <div className="overflow-hidden">
                 <div className="admin__signin__container min-h-full flex items-center justify-center py-12 px-4 custom:py-8 sm:px-6 lg:px-8">
-                    <div className="admin__signin__container--form max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
+                    <div className="admin__signin__container--form shadow-lg max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
                         <div>
                             <LazyLoadImage
                                 className="createadminsvg w-72 custom:w-40 md:w-40 lg:w-60"
@@ -71,7 +72,7 @@ const CreateAdmin = () => {
                         <form className="mt-8 space-y-6" onSubmit={createAdmin}>
                             <input type="hidden" name="remember" defaultValue="true" />
                             <div className="rounded-md shadow-sm -space-y-px">
-                            <div>
+                                <div>
                                     <label htmlFor="username" className="sr-only">
                                         Username
                                     </label>
@@ -142,6 +143,7 @@ const CreateAdmin = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

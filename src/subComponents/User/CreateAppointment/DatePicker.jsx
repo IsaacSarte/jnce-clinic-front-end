@@ -6,7 +6,7 @@ const DatePicker = (props) => {
 
     return (
         <>
-            <div className="profile__form max-w-3xl p-16 mt-16 rounded-md relative">
+            <div className="profile__form max-w-3xl p-16 mt-16 shadow-lg rounded-md relative">
                 <p className="font-semibold text-xl custom:text-md">JNCE Address: {location}</p>
                 <br />
 
