@@ -19,6 +19,7 @@ const CreateAdmin = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
 
     const createAdmin = (e) => {
         const url = `${process.env.REACT_APP_JNCE_BASE_URL}/admins/`;
@@ -27,6 +28,7 @@ const CreateAdmin = () => {
         axios
             .post(url, {
                 admin: {
+                    name: username,
                     email: email,
                     password: password
                 }
@@ -69,6 +71,23 @@ const CreateAdmin = () => {
                         <form className="mt-8 space-y-6" onSubmit={createAdmin}>
                             <input type="hidden" name="remember" defaultValue="true" />
                             <div className="rounded-md shadow-sm -space-y-px">
+                            <div>
+                                    <label htmlFor="username" className="sr-only">
+                                        Username
+                                    </label>
+                                    <input
+                                        id="usename"
+                                        name="username"
+                                        type="text"
+                                        autoComplete="username"
+                                        className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-700 focus:border-green-700 focus:z-10 sm:text-sm"
+                                        placeholder="Username"
+                                        onChange={(e) =>
+                                            setUsername(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <br />
                                 <div>
                                     <label htmlFor="email-address" className="sr-only">
                                         Email address

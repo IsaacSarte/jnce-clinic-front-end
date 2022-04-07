@@ -64,7 +64,7 @@ const ViewFeedbacks = () => {
 
             <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-3/4">
                 <table className="w-full text-left">
-                    <thead className="text-lg bg-green-300 rounded text-black font-semibold uppercase">
+                    <thead className="text-lg bg-green-300 rounded text-black font-semibold capitalize">
                         <tr className="text-md">
                             <th scope="col" className="px-6 py-3">
                                 Email Address
@@ -95,7 +95,7 @@ const ViewFeedbacks = () => {
                                         <strong>{value.attributes.fullname}</strong>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <strong>+{value.attributes.phone}</strong>
+                                        <strong>{value.attributes.phone}</strong>
                                     </td>
                                     <td className="px-6 py-4">
                                         <strong>
