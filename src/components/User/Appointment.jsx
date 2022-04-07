@@ -8,6 +8,7 @@ import { createAppointmentURL, getServicesURL } from '../../api/UserApi';
 /* Components */
 import Header from './Header';
 import { SuccessModal } from './SuccessModal'; // appointment created successfully modal component
+import { ErrorModal } from './ErrorModal'; // appointment with error modal component
 
 // Multi Step Form
 import { Stepper, StepLabel, Step } from '@material-ui/core';
@@ -31,6 +32,9 @@ const Appointment = () => {
   const [appointment, setAppointment] = useState('');
 
   const [services, setServices] = useState([]);
+
+  /* Error Handlers */
+  const [errorDate, setErrorDate] = useState('');
 
   // Decrypting JWT
   const token_res = JSON.parse(localStorage.getItem('calendarOAuth'));
@@ -57,9 +61,9 @@ const Appointment = () => {
     const startdateFormat = new Date(startDateTime).toLocaleDateString()
 
     if (startdateFormat < currentDate) {
-      alert("Oops, you've entered invalid dates")
+      setErrorDate("Oops, past date/s are not allowed");
     } else {
-    
+
       const access_token = `${token_res.data.access_token}`
       axios.post(`${createAppointmentURL}/create-event`, {
         title,
@@ -71,7 +75,7 @@ const Appointment = () => {
       })
         .then(res => {
           console.log(res.data);
-      
+
           axios.post(`${process.env.REACT_APP_JNCE_BASE_URL}/api/v1/appointments`, {
             service_id: description_id,
             status: 'pending',
@@ -83,14 +87,14 @@ const Appointment = () => {
             email: decodedToken.email
           }).then(res => {
             console.log(res)
-              setAppointment('You are Successfully Scheduled!');
+            setAppointment('You are Successfully Scheduled!');
 
           }).catch(err => console.log(err))
 
         })
         .catch(err => console.log(err))
     }
-  
+
   }
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -154,7 +158,11 @@ const Appointment = () => {
               appointment={appointment}
             />
           ) : (
-            null
+            errorDate ? (
+              <ErrorModal
+                errorDate={errorDate}
+              />
+            ) : null
           )
         }
         {showStep(currentStep)}
