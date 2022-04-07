@@ -7,9 +7,10 @@ import { SuccessModal } from './SuccessModal'
 
 // Icons
 import updateadmin from '../../../assets/svg/updateadmin.svg';
+
 // Components
 import Header from '../Header.jsx';
-
+import Footer from '../Footer';
 
 const UpdateAdmin = () => {
 
@@ -31,7 +32,7 @@ const UpdateAdmin = () => {
                     Authorization: Token
                 }
             })
-            .then((res) => (setEmail(res.data.email), setUsername(res.data.name)))
+            .then((res) => (setEmail(res.data.email), setUsername(res.data.name), console.log(res)))
             .catch((e) => {
                 console.log(e)
             })
@@ -66,7 +67,7 @@ const UpdateAdmin = () => {
             <Header />
             <div className="overflow-hidden">
                 <div className="admin__signin__container flex items-center text-center justify-center py-12 px-4 custom:py-8 sm:px-6 lg:px-8">
-                    <div className="admin__signin__container--form max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
+                    <div className="admin__signin__container--form shadow-lg max-w-md w-full space-y-8 rounded-lg px-16 py-8 lg:max-w-xl">
                         <div>
                             <LazyLoadImage
                                 className="updateadminsvg w-72 custom:w-40 md:w-40 lg:w-60"
@@ -165,6 +166,7 @@ const UpdateAdmin = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -6,13 +6,13 @@ const ServicePicker = (props) => {
 
     return (
         <>
-            <div className="profile__form max-w-3xl p-16 mt-16 rounded-md relative">
+            <div className="profile__form max-w-3xl p-16 mt-16 shadow-lg rounded-md relative">
                 <h1 className="text-2xl text-left font-bold custom:text-xl">Choose your desired Service Type: </h1>
                 <br />
 
                 <select
                     name="services"
-                    id = {description_id}
+                    id={description_id}
                     className="select-input border border-gray-300 text-gray-900 text-sm rounded-lg block pl-10 p-2.5 custom:w-full"
                     value={description}
                     onChange={e => (setDescription(e.target.value), setDescriptionID(e.target.selectedIndex))}
