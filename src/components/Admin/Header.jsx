@@ -37,9 +37,19 @@ const solutions = [
         icon: AppointmentIcon,
     },
     {
-        name: 'Admin',
+        name: 'Event-logs',
+        href: '/view-event-logs',
+        icon: AppointmentIcon,
+    },
+    {
+        name: 'Add admin',
         href: '/create-admin',
-        icon: AdminIcon,
+        icon: AddIcon,
+    },
+    {
+        name: 'Update admin',
+        href: '/update-admin',
+        icon: EditIcon,
     },
     {
         name: 'See Patients',
@@ -110,6 +120,11 @@ const Header = () => {
                                 to="/view-appointments"
                                 className="text-base font-medium text-gray-700 hover:text-gray-900 md:text-sm lg:text-xl">
                                 Appointments
+                            </NavLink>
+                            <NavLink
+                                to="/view-event-logs"
+                                className="text-base font-medium text-gray-700 hover:text-gray-900 md:text-sm lg:text-xl">
+                                Event-Logs
                             </NavLink>
                             <Popover className="relative">
                                 {({ open }) => (
