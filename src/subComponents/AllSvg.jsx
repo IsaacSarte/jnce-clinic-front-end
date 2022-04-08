@@ -80,7 +80,7 @@ export const CloseIcon = (props) => (
 )
 
 export const AdminAvatar = (props) => (
-<svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width={30}
     height={30}
@@ -90,6 +90,20 @@ export const AdminAvatar = (props) => (
     {...props}
   >
     <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z" />
+  </svg>
+)
+
+export const EventIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={30}
+    height={30}
+    style={{
+      fill: "green",
+    }}
+    {...props}
+  >
+    <path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-1 15h-6v-6h6v6zm1-10H5V7h14v2z" />
   </svg>
 )
 

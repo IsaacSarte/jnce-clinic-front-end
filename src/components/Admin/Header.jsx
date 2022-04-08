@@ -18,8 +18,7 @@ import { AdminIcon } from '../../subComponents/AllSvg.jsx';
 
 import { AddIcon } from '../../subComponents/AllSvg.jsx';
 import { EditIcon } from '../../subComponents/AllSvg.jsx';
-
-import { PatientIcon } from '../../subComponents/AllSvg.jsx';
+import { EventIcon } from '../../subComponents/AllSvg.jsx';
 
 // Images
 import jnce_logo from '../../assets/images/jnce-logo.png';
@@ -39,7 +38,7 @@ const solutions = [
     {
         name: 'Event-logs',
         href: '/view-event-logs',
-        icon: AppointmentIcon,
+        icon: EventIcon,
     },
     {
         name: 'Add admin',
@@ -48,11 +47,6 @@ const solutions = [
     },
     {
         name: 'Update admin',
-        href: '/update-admin',
-        icon: EditIcon,
-    },
-    {
-        name: 'Update Admin',
         href: '/update-admin',
         icon: EditIcon,
     }
