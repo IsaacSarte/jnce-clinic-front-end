@@ -23,7 +23,8 @@ import ViewPatients from '../components/Admin/ViewPatients/ViewPatients';
 import ViewAppointments from '../components/Admin/ViewAppointments/ViewAppointments';
 import ShowFeedback from '../components/Admin/ViewFeedbacks/ShowFeedback';
 import ShowAppointments from '../components/Admin/ViewAppointments/ShowAppointments';
-
+import ViewLogs from '../components/Admin/ViewEventLogs/ViewLogs';
+import ShowLogs from '../components/Admin/ViewEventLogs/ShowLogs';
 import Appointment from '../components/User/Appointment';
 
 /* User Routes */
@@ -40,8 +41,12 @@ const routes = () => {
             <AuthRoutes path="/view-patients" exact component={ViewPatients} />
             <AuthRoutes path="/view-appointments" exact component={ViewAppointments} />
             <AuthRoutes path="/view-feedbacks" exact component={ViewFeedbacks} />
+            <AuthRoutes path="/view-event-logs" exact component={ViewLogs} />
             <AuthRoutes path="/show-feedback" exact component={ShowFeedback} />
             <AuthRoutes path="/show-appointments" exact component={ShowAppointments} />
+            <AuthRoutes path="/show-event-logs" exact component={ShowLogs} />
+            
+
             {/* User Routes */}
             <UserProtectedRoutes path="/" exact component={Landing} />
             <UserAuthRoutes path="/create-event" exact component={Appointment} />
