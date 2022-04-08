@@ -37,14 +37,14 @@ const solutions = [
         icon: AppointmentIcon,
     },
     {
-        name: 'Admin',
+        name: 'Add Admin',
         href: '/create-admin',
         icon: AdminIcon,
     },
     {
-        name: 'See Patients',
-        href: '/view-patients',
-        icon: PatientIcon,
+        name: 'Update Admin',
+        href: '/update-admin',
+        icon: EditIcon,
     }
 ]
 

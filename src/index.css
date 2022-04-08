@@ -103,6 +103,15 @@
 
 /* Admin */
 
+.admin__dashboard__container,
+.admin__email {
+  margin: 0 auto;
+}
+
+.admin__svg {
+  width: 400px;
+}
+
 .admin__signin__container--form {
   background-color: #f7f7f7;
 }
@@ -197,6 +206,11 @@
 @media screen and (max-width: 768px) {
   .home__container--title {
     gap: 0rem;
+  }
+
+  .admin__dashboard__container,
+  .admin__email {
+    width: 90%;
   }
 
   .info__container {

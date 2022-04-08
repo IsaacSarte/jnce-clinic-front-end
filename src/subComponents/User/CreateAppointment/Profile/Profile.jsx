@@ -13,7 +13,7 @@ const Profile = (props) => {
 
     return (
         <>
-            <div className="profile__form max-w-3xl shadow-lg p-16 mt-16 rounded-md relative">
+            <div className="profile__form max-w-3xl shadow-lg p-16 mt-16 rounded-md relative md:w-[90%] lg:w-full">
 
                 <p className="font-semibold text-xl">{title}</p>
                 <br />
