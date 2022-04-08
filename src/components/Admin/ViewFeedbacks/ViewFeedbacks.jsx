@@ -63,7 +63,7 @@ const ViewFeedbacks = () => {
             <br /><br />
 
             <div className="user__feedback--title max-w-7xl md:w-[90%]">
-                <h1 className="text-left font-bold text-2xl custom:text-lg">All User Feedback</h1>
+                <h1 className="text-left font-bold text-2xl custom:text-lg">JNCE Feedback Lists</h1>
             </div>
 
             <br />

@@ -9,15 +9,15 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 const ViewAppointments = () => {
 
     const [getAppointments, setAppointments] = useState([]);
-    const url = `${process.env.REACT_APP_JNCE_BASE_URL}/api/v1/appointments`;
+    const url = `${process.env.REACT_APP_JNCE_BASE_URL}`;
     const Token = localStorage.getItem("adminAuth");
+    const adminIdentifier = localStorage.getItem("adminIdentifier");
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateFormat;
 
     useEffect(() => {
-
         axios
-            .get(url, {
+            .get(`${url}/api/v1/appointments`, {
                 headers: {
                     Authorization: Token
                 }
@@ -36,7 +36,7 @@ const ViewAppointments = () => {
     const handleAppointment = (e) => {
         const appntment_id = e.target.id;
         axios
-            .get(`${url}/${appntment_id}`, {
+            .get(`${url}/api/v1/appointments/${appntment_id}`, {
                 headers: {
                     Authorization: Token
                 }
@@ -60,7 +60,7 @@ const ViewAppointments = () => {
                     label: 'Yes',
                     onClick: () => {
                         axios
-                            .put(`${url}/${id}`, {
+                            .put(`${url}/api/v1/appointments/${id}`, {
                                 status: 'done'
                             })
                             .then((res) => {
@@ -69,7 +69,18 @@ const ViewAppointments = () => {
                             .catch((err) => {
                                 console.log(err)
                             })
-                        window.location.reload();
+
+                        axios
+                            .post(`${url}/api/v1/logs`, {
+                                appointment_id : id,
+                                admin_id : adminIdentifier
+                            })
+                            .then((res) => {
+                                console.log(res)
+                                window.location.reload();
+                            })
+                            .catch(err => console.log(err))
+                        
                     }
                 },
                 {
@@ -87,7 +98,7 @@ const ViewAppointments = () => {
             <br /><br />
 
             <div className="user__feedback--title max-w-7xl md:w-[90%]">
-                <h1 className="text-left font-bold text-2xl custom:text-lg">All JNCE Appointments</h1>
+                <h1 className="text-left font-bold text-2xl custom:text-lg">JNCE Appointment Lists</h1>
             </div>
 
             <br />
@@ -114,7 +125,7 @@ const ViewAppointments = () => {
                             <th scope="col" className="px-6 py-3">
                                 Status
                             </th>
-                            <th scope="col" className="px-6 py-3 text-center" colspan="2">
+                            <th scope="col" className="px-6 py-3 text-center" colSpan="2">
                                 Action
                             </th>
 
@@ -124,7 +135,7 @@ const ViewAppointments = () => {
                         {getAppointments.length ? (
 
                             getAppointments.map((value, index) => (
-                                <tr className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
+                                <tr key={index} className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
                                     <td className="px-6 py-4 text-sm">
                                         <strong>{value.attributes.email}</strong>
                                     </td>
@@ -179,7 +190,7 @@ const ViewAppointments = () => {
 
                         ) : (
                             <>
-                                <td className="text-center font-bold text-lg p-8" colspan="7">No record found!</td>
+                                <td className="text-center font-bold text-lg p-8" colSpan="7">No record found!</td>
                             </>
                         )}
                     </tbody>
