@@ -15,7 +15,7 @@ const ServicePicker = (props) => {
 
     return (
         <>
-            <div className="profile__form max-w-3xl p-16 mt-16 shadow-lg rounded-md relative">
+            <div className="profile__form max-w-3xl p-16 mt-16 shadow-lg rounded-md relative md:w-[90%] lg:w-full">
                 <h1 className="text-2xl text-left font-bold custom:text-xl">Choose your desired Service Type: </h1>
                 <br />
 
