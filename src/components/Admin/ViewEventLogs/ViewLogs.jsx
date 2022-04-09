@@ -121,7 +121,7 @@ const ViewLogs = () => {
                                     <td className="px-6 py-4 text-sm">
                                         <strong className="whitespace-nowrap">
                                             {
-                                                dateFormat = new Date(value.attributes.appointment.start_datetime).toLocaleDateString("en-US", options)
+                                                dateFormat = new Date(value.attributes.appointment.start_datetime).toLocaleString('en', { timeZone: 'UTC' })
                                             }
                                         </strong>
                                     </td>

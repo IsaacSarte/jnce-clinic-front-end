@@ -45,14 +45,6 @@ const ShowAppointments = () => {
                                 }
                             </dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-lg font-medium text-gray-800">Date Creation</dt>
-                            <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
-                                {
-                                    dateFormat = `${new Date(data[0].attributes["created-at"]).toUTCString().split(' ').slice(0, 5).join(' ')}`
-                                }
-                            </dd>
-                        </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-lg font-medium text-gray-800">Status</dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{data[0].attributes.status}</dd>

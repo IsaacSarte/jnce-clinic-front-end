@@ -14,6 +14,7 @@ const ViewAppointments = () => {
     const url = `${process.env.REACT_APP_JNCE_BASE_URL}`;
     const Token = localStorage.getItem("adminAuth");
     const adminIdentifier = localStorage.getItem("adminIdentifier");
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateFormat;
 
     useEffect(() => {
@@ -126,9 +127,6 @@ const ViewAppointments = () => {
                                 Scheduled Date
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Date Booked
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 Status
                             </th>
                             <th scope="col" className="px-6 py-3 text-center" colSpan="2">
@@ -155,13 +153,6 @@ const ViewAppointments = () => {
                                         <strong className="whitespace-nowrap">
                                             {
                                                 dateFormat = new Date(value.attributes["start-datetime"]).toLocaleString('en', { timeZone: 'UTC' })
-                                            }
-                                        </strong>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        <strong className="whitespace-nowrap">
-                                            {
-                                                dateFormat = new Date(value.attributes["created-at"]).toLocaleString('en', { timeZone: 'UTC' })
                                             }
                                         </strong>
                                     </td>

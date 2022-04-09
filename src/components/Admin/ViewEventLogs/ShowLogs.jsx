@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 //component
@@ -15,7 +15,7 @@ const ShowLogs = () => {
     let dateFormat;
 
     useEffect(() => {
-            axios
+        axios
             .get(`${url}/api/v1/services`, {
                 headers: {
                     Authorization: Token
@@ -32,8 +32,8 @@ const ShowLogs = () => {
     }, []);
     return (
         <>
-        <Header />
-        <br /><br />
+            <Header />
+            <br /><br />
 
             <div className="feedback__table__show bg-green-300 max-w-7xl shadow overflow-hidden sm:rounded-lg w-[90%] md:w-[90%]">
                 <div className="px-4 py-5 sm:px-6">
@@ -45,8 +45,8 @@ const ShowLogs = () => {
                             <dt className="text-lg font-medium text-gray-800">Service Type</dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
                                 {
-                                    service.length ? service[data.attributes.appointment.service_id - 1].attributes.name 
-                                    : data.attributes.appointment.service_id
+                                    service.length ? service[data.attributes.appointment.service_id - 1].attributes.name
+                                        : data.attributes.appointment.service_id
                                 }</dd>
                         </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -57,7 +57,7 @@ const ShowLogs = () => {
                             <dt className="text-lg font-medium text-gray-800">Sheduled date </dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
                                 {
-                                    dateFormat = new Date(data.attributes.appointment.start_datetime).toLocaleDateString("en-US", options)
+                                    dateFormat = new Date(data.attributes.appointment.start_datetime).toLocaleString('en', { timeZone: 'UTC' })
                                 }
                             </dd>
                         </div>
@@ -68,7 +68,7 @@ const ShowLogs = () => {
                     </dl>
                 </div>
             </div>
-        <Footer />
+            <Footer />
         </>
     )
 }
