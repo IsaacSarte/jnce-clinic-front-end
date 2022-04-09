@@ -41,7 +41,7 @@ const ShowAppointments = () => {
                             <dt className="text-lg font-medium text-gray-800">Scheduled Date</dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
                                 {
-                                    dateFormat = new Date(data[0].attributes["start-datetime"]).toLocaleDateString("en-US", options)
+                                    dateFormat = new Date(data[0].attributes["start-datetime"]).toLocaleString('en', { timeZone: 'UTC' })
                                 }
                             </dd>
                         </div>
@@ -49,7 +49,7 @@ const ShowAppointments = () => {
                             <dt className="text-lg font-medium text-gray-800">Date Creation</dt>
                             <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">
                                 {
-                                    dateFormat = new Date(data[0].attributes["created-at"]).toLocaleDateString("en-US", options)
+                                    dateFormat = `${new Date(data[0].attributes["created-at"]).toUTCString().split(' ').slice(0, 5).join(' ')}`
                                 }
                             </dd>
                         </div>
