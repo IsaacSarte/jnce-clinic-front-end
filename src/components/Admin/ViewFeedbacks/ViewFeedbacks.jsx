@@ -82,9 +82,6 @@ const ViewFeedbacks = () => {
                                 Phone Number
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Date
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 Action
                             </th>
                         </tr>
@@ -102,13 +99,6 @@ const ViewFeedbacks = () => {
                                     </td>
                                     <td className="px-6 py-4">
                                         <strong>{value.attributes.phone}</strong>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <strong className="whitespace-nowrap">
-                                            {
-                                                feedbackDate = new Date(value.attributes.feedback[0].created_at).toLocaleDateString("en-US", options)
-                                            }
-                                        </strong>
                                     </td>
                                     <td className="px-6 py-4">
                                         <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"

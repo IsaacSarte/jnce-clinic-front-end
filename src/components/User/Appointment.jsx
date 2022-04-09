@@ -27,6 +27,7 @@ const Appointment = () => {
   const [description_id, setDescriptionID] = useState(0);
   const [location, setLocation] = useState('G/F CDC Bldg. 1195 Ma. Orosa St., Ermita Manila');
 
+  const [bookedDate, setBookedDate] = useState('');
   const [startDateTime, setStartDateTime] = useState('');
   const [endDateTime, setEndDateTime] = useState('');
 
