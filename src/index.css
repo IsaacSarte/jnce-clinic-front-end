@@ -202,6 +202,12 @@
   text-align: center;
 }
 
+@media screen and (max-height: 750px) {
+  .admin__footer {
+    position: relative;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .home__container--title {
