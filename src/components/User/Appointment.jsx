@@ -59,15 +59,29 @@ const Appointment = () => {
 
   const hanleSubmitEvent = (e) => {
     e.preventDefault()
-    const currentDate = new Date().toLocaleDateString()
-    const startdateFormat = new Date(startDateTime).toLocaleDateString()
+
+    let currentDate = new Date().getTime();
+    let startdateFormat = new Date(startDateTime).getTime();
+
+    console.log('Curr: ' + currentDate)
+    console.log('Start: ' + startdateFormat)
 
     if (startdateFormat < currentDate) {
+      console.log('Invalid Date');
+      currentDate = new Date().toLocaleDateString();
+      console.log('Current Date: ' + currentDate);
+      startdateFormat = new Date(startDateTime).toLocaleDateString();
+      console.log('Start Date: ' + startdateFormat);
       setErrorDate("Oops, past date/s are not allowed");
     }
     else if (currentStep === 3 && !startDateTime) {
+      console.log('No Date');
       setNoDateError("Schedule date is required.")
-    } else {
+    }
+    else {
+      console.log('Valid Date');
+      startdateFormat = new Date(startDateTime).toLocaleDateString();
+      console.log('Start Date: ' + startdateFormat);
       const access_token = `${token_res.data.access_token}`
       axios.post(`${createAppointmentURL}/create-event`, {
         title,

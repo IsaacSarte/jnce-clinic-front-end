@@ -8,11 +8,12 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 const ViewAppointments = () => {
 
+    /* State Management */
     const [getAppointments, setAppointments] = useState([]);
+
     const url = `${process.env.REACT_APP_JNCE_BASE_URL}`;
     const Token = localStorage.getItem("adminAuth");
     const adminIdentifier = localStorage.getItem("adminIdentifier");
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateFormat;
 
     useEffect(() => {
@@ -24,6 +25,7 @@ const ViewAppointments = () => {
             })
             .then((res) => {
                 setAppointments(res.data.data);
+                console.log(res.data.data);
             }
             )
             .catch((err) => {
@@ -31,7 +33,6 @@ const ViewAppointments = () => {
             })
 
     }, []);
-
 
     const handleAppointment = (e) => {
         const appntment_id = e.target.id;
@@ -72,15 +73,15 @@ const ViewAppointments = () => {
 
                         axios
                             .post(`${url}/api/v1/logs`, {
-                                appointment_id : id,
-                                admin_id : adminIdentifier
+                                appointment_id: id,
+                                admin_id: adminIdentifier
                             })
                             .then((res) => {
                                 console.log(res)
                                 window.location.reload();
                             })
                             .catch(err => console.log(err))
-                        
+
                     }
                 },
                 {
@@ -97,8 +98,13 @@ const ViewAppointments = () => {
 
             <br /><br />
 
-            <div className="user__feedback--title max-w-7xl md:w-[90%]">
+            <div className="user__feedback--title max-w-7xl flex gap-8 md:w-[90%] custom:flex-col gap-1 2xl:gap-8">
                 <h1 className="text-left font-bold text-2xl custom:text-lg">JNCE Appointment Lists</h1>
+                <input
+                    type="search"
+                    placeholder='🔍 Search Email Address'
+                    value={""}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 pl-2 p-2 custom:w-full mt-[0.125rem] 2xl:w-1/2 mt-0" />
             </div>
 
             <br />
@@ -148,14 +154,14 @@ const ViewAppointments = () => {
                                     <td className="px-6 py-4 text-sm">
                                         <strong className="whitespace-nowrap">
                                             {
-                                                dateFormat = new Date(value.attributes["start-datetime"]).toLocaleDateString("en-US", options)
+                                                dateFormat = new Date(value.attributes["start-datetime"]).toLocaleString('en', { timeZone: 'UTC' })
                                             }
                                         </strong>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
                                         <strong className="whitespace-nowrap">
                                             {
-                                                dateFormat = new Date(value.attributes["created-at"]).toLocaleDateString("en-US", options)
+                                                dateFormat = new Date(value.attributes["created-at"]).toLocaleString('en', { timeZone: 'UTC' })
                                             }
                                         </strong>
                                     </td>
