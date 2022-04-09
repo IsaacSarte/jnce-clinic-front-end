@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
@@ -28,7 +28,7 @@ const ViewLogs = () => {
                 console.log(err)
             })
 
-            axios
+        axios
             .get(`${url}/api/v1/services`, {
                 headers: {
                     Authorization: Token
@@ -101,49 +101,49 @@ const ViewLogs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {LogLists.length ? (
-                        LogLists.map((value, index) => (
-                            <tr key={index} className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
-                                <td className="px-6 py-4 text-sm">
-                                    <strong>{value.attributes.appointment.fullname}</strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <strong>{value.attributes.appointment.email}</strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <strong>
-                                        {
-                                            service.length ?  service[value.attributes.appointment.service_id - 1].attributes.name
-                                            : value.attributes.appointment.service_id
-                                        }
-                                    </strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <strong className="whitespace-nowrap">
-                                        {
-                                            dateFormat = new Date(value.attributes.appointment.start_datetime).toLocaleDateString("en-US", options)
-                                        }
-                                    </strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <strong>{value.attributes.appointment.status}</strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <strong>{value.attributes["status-change-by"].name}</strong>
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
-                                        onClick={handleLogs}
-                                    >
-                                        View
-                                    </p>
-                                </td>
-                            </tr>
-                        ))
+                        {LogLists.length ? (
+                            LogLists.map((value, index) => (
+                                <tr key={index} className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong>{value.attributes.appointment.fullname}</strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong>{value.attributes.appointment.email}</strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong>
+                                            {
+                                                service.length ? service[value.attributes.appointment.service_id - 1].attributes.name
+                                                    : value.attributes.appointment.service_id
+                                            }
+                                        </strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong className="whitespace-nowrap">
+                                            {
+                                                dateFormat = new Date(value.attributes.appointment.start_datetime).toLocaleDateString("en-US", options)
+                                            }
+                                        </strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong>{value.attributes.appointment.status}</strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <strong>{value.attributes["status-change-by"].name}</strong>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm">
+                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
+                                            onClick={handleLogs}
+                                        >
+                                            View
+                                        </p>
+                                    </td>
+                                </tr>
+                            ))
                         ) : (
-                        <>
-                            <td className="text-center font-bold text-lg p-8" colSpan="7">No record found!</td>
-                        </>
+                            <>
+                                <td className="text-center font-bold text-lg p-8" colSpan="7">No record found!</td>
+                            </>
                         )}
 
                     </tbody>
