@@ -72,7 +72,7 @@ const Dashboard = () => {
 
             <br /><br />
 
-            <div className="fixed bottom-0 w-full custom:relative">
+            <div className="admin__footer fixed bottom-0 w-full custom:relative">
                 <Footer />
             </div>
         </>
