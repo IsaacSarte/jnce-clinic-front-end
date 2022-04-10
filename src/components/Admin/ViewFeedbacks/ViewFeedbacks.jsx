@@ -5,13 +5,14 @@ import { getFeedbackURL } from '../../../api/AdminApi.jsx';
 
 // Components
 import Header from '../Header.jsx';
+import FeedbackList from './FeedbackList'
 
 const ViewFeedbacks = () => {
 
     const [getFeedbacks, setGetFeedbacks] = useState([]);
+    const [search, setSearchKeyword] = useState('');
+    const [filteredList, setFilteredList] = useState([]);
     const [showFeedbacks, setShowFeedbacks] = useState([]);
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
-    let feedbackDate;
 
     useEffect(() => {
         const Token = localStorage.getItem("adminAuth");
@@ -56,67 +57,41 @@ const ViewFeedbacks = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }
 
+    const handleSearchEmail = (e) => {
+        setSearchKeyword(e.target.value)
+
+        const filteredEmail = getFeedbacks.filter((i) => {
+            return i.attributes.email.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+
+        setFilteredList(filteredEmail)
+        console.log(filteredEmail)
+    }
+
     return (
         <>
             <Header />
 
             <br /><br />
 
-            <div className="user__feedback--title max-w-7xl md:w-[90%]">
+            <div className="user__feedback--title max-w-7xl md:w-[90%]  flex gap-8 md:w-[90%] custom:flex-col gap-1 2xl:gap-8">
                 <h1 className="text-left font-bold text-2xl custom:text-lg">JNCE Feedback Lists</h1>
+                <input
+                    type="search"
+                    placeholder='🔍 Search Email Address'
+                    value={search}
+                    onChange={handleSearchEmail}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 pl-2 p-2 custom:w-full mt-[0.125rem] 2xl:w-1/2 mt-0" />
             </div>
 
             <br />
 
             <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-[90%]">
-                <table className="w-full text-left">
-                    <thead className="text-lg bg-green-300 rounded text-black font-semibold capitalize">
-                        <tr className="text-md whitespace-nowrap">
-                            <th scope="col" className="px-6 py-3">
-                                Email Address
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Fullname
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Phone Number
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {getFeedbacks.length ? (
-
-                            getFeedbacks.map((value, index) => (
-                                <tr className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
-                                    <td className="px-6 py-4">
-                                        <strong>{value.attributes.email}</strong>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <strong>{value.attributes.fullname}</strong>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <strong>{value.attributes.phone}</strong>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
-                                            onClick={handleMessage}
-                                        >
-                                            View
-                                        </p>
-                                    </td>
-                                </tr>
-                            ))
-
-                        ) : (
-                            <>
-                                <td className="text-center font-bold text-lg p-8" colspan="5">No User Feedback Record Found !</td>
-                            </>
-                        )}
-                    </tbody>
-                </table>
+               < FeedbackList 
+                    getFeedbacks={getFeedbacks}
+                    filteredList={filteredList}
+                    onHandleMessage={handleMessage}
+               />
             </div>
 
         </>

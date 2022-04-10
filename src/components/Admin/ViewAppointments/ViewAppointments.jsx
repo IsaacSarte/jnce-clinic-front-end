@@ -3,6 +3,7 @@ import axios from 'axios'
 
 // Components
 import Header from '../Header.jsx';
+import AppointmentList from './AppointmentList'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
@@ -10,13 +11,12 @@ const ViewAppointments = () => {
 
     /* State Management */
     const [getAppointments, setAppointments] = useState([]);
-
+    const [search, setSearchKeyword] = useState('');
+    const [filteredList, setFilteredList] = useState([]);
     const url = `${process.env.REACT_APP_JNCE_BASE_URL}`;
     const Token = localStorage.getItem("adminAuth");
     const adminIdentifier = localStorage.getItem("adminIdentifier");
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
-    let dateFormat;
-
+   
     useEffect(() => {
         axios
             .get(`${url}/api/v1/appointments`, {
@@ -93,6 +93,17 @@ const ViewAppointments = () => {
         });
     };
 
+    const handleSearchEmail = (e) => {
+        setSearchKeyword(e.target.value)
+
+        const filteredEmail = getAppointments.filter((i) => {
+            return i.attributes.email.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+
+        setFilteredList(filteredEmail)
+        console.log(filteredEmail)
+    }
+
     return (
         <>
             <Header />
@@ -104,94 +115,21 @@ const ViewAppointments = () => {
                 <input
                     type="search"
                     placeholder='🔍 Search Email Address'
-                    value={""}
+                    value={search}
+                    onChange={handleSearchEmail}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 pl-2 p-2 custom:w-full mt-[0.125rem] 2xl:w-1/2 mt-0" />
             </div>
 
             <br />
 
             <div className="feedback__table relative max-w-7xl overflow-x-auto shadow-md sm:rounded-lg md:w-[90%]">
-                <table className="w-full text-left">
-                    <thead className="text-md bg-green-300 rounded text-black font-semibold capitalize">
-                        <tr className="text-md">
-                            <th scope="col" className="px-6 py-3">
-                                Email
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Fullname
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Service Type
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Scheduled Date
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Status
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-center" colSpan="2">
-                                Action
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {getAppointments.length ? (
-
-                            getAppointments.map((value, index) => (
-                                <tr key={index} className="bg-white border-b dark:border-gray-700 dark:hover:bg-gray-100">
-                                    <td className="px-6 py-4 text-sm">
-                                        <strong>{value.attributes.email}</strong>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        <strong>{value.attributes.fullname}</strong>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        <strong>{value.attributes.service.name}</strong>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        <strong className="whitespace-nowrap">
-                                            {
-                                                dateFormat = new Date(value.attributes["start-datetime"]).toLocaleString('en', { timeZone: 'UTC' })
-                                            }
-                                        </strong>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        {value.attributes.status === 'pending' ? (
-                                            <strong className="text-yellow-700">{value.attributes.status}</strong>
-                                        ) : (
-                                            <strong className="text-green-700">{value.attributes.status}</strong>
-                                        )}
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        <p id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
-                                            onClick={handleAppointment}
-                                        >
-                                            View
-                                        </p>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">
-                                        {value.attributes.status === 'pending' ? (
-                                            <span id={`${value.id}`} className="cursor-pointer font-bold text-base text-blue-700 hover:text-green-700 transition-all duration-75 ease-in hover:scale-110 capitalize"
-                                                onClick={handleChangeStatus}
-                                            >
-                                                Done
-                                            </span>
-                                        ) : (
-                                            <span></span>
-                                        )}
-                                    </td>
-
-                                </tr>
-                            ))
-
-                        ) : (
-                            <>
-                                <td className="text-center font-bold text-lg p-8" colSpan="7">No record found!</td>
-                            </>
-                        )}
-                    </tbody>
-                </table>
+                < AppointmentList
+                 getAppointments={getAppointments}
+                 filteredList={filteredList}
+                 onHandleAppointment={handleAppointment}
+                 onHandleChangeStatus={handleChangeStatus}
+                 
+                />
             </div>
         </>
     )
