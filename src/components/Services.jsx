@@ -62,7 +62,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0 }}
             >
               <LazyLoadImage
-                className="h-[145px]"
+                className="h-[145px] rounded-lg"
                 alt="Service 1"
                 src={'https://images.unsplash.com/photo-1614308456595-a59d48697ea8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=200'}
               />
@@ -73,7 +73,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0.05 }}
             >
               <LazyLoadImage
-                className="h-[175px]"
+                className="h-[175px] rounded-lg"
                 alt="Service 2"
                 src={'https://images.unsplash.com/photo-1628348070889-cb656235b4eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZWNnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=200&q=200'}
               />
@@ -84,7 +84,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0.1 }}
             >
               <LazyLoadImage
-                className="h-[205px]"
+                className="h-[205px] rounded-lg"
                 alt="Service 3"
                 src={'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=200'}
               />
@@ -95,7 +95,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0.15 }}
             >
               <LazyLoadImage
-                className="h-[205px] -mt-16"
+                className="h-[205px] -mt-16 rounded-lg"
                 alt="Service 4"
                 src={'https://images.unsplash.com/photo-1630531210843-d6f343ad1f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dWx0cmFzb3VuZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=200&q=200'}
               />
@@ -106,7 +106,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0.2 }}
             >
               <LazyLoadImage
-                className="h-[175px] -mt-8"
+                className="h-[175px] -mt-8 rounded-lg"
                 alt="Service 5"
                 src={'https://images.unsplash.com/photo-1626736985932-c0df2ae07a2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=200'}
               />
@@ -117,7 +117,7 @@ const Services = () => {
               transition={{ type: 'fade', duration: 0.25, delay: 0.25 }}
             >
               <LazyLoadImage
-                className="h-[150px] -mt-[0.4rem]"
+                className="h-[150px] -mt-[0.4rem] rounded-lg"
                 alt="Service 6"
                 src={'https://images.unsplash.com/photo-1605549188315-8aa899c3d35f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvdmlkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=200&q=200'}
               />

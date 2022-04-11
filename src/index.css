@@ -270,17 +270,6 @@
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-  .info__container {
-    flex-direction: row;
-  }
-
-  .info__container .card {
-    width: 17.5%;
-    height: 15rem;
-  }
-}
-
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
   .footer_header--detail {

@@ -98,7 +98,7 @@ const Home = () => {
       <br /><br /><br /><br />
 
       {/* Basic Info */}
-      <div ref={ref} className="info__container max-w-7xl w-full grid grid-cols-4 justify-items-center gap-4 custom:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div ref={ref} className="info__container max-w-7xl grid grid-cols-4 justify-items-center gap-4 custom:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[90%]">
 
         <motion.div animate={fade} className="card hover:bg-green-800 hover:text-white">
           <div className="info__container--img absolute top-6">
