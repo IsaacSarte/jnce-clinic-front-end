@@ -6,16 +6,16 @@
 
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4);
-  background-color: #CFCFCF
+  background-color: #CFCFCF;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: #F5F5F5
+  background-color: #F5F5F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #15803d
+  background-color: #15803d;
 }
 
 * {
@@ -43,7 +43,7 @@
 }
 
 .info__container {
-  margin-top: 5rem;
+  margin: 0 auto;
 }
 
 .info__container>div {
@@ -55,7 +55,7 @@
 }
 
 .info__container .card {
-  width: 15%;
+  width: 100%;
   height: 17.5rem;
   position: relative;
   transition: all 0.25s;
@@ -87,6 +87,10 @@
 
 .service__container--btn:hover {
   background-color: #374151;
+}
+
+.services__container--section--images {
+  margin: 0 auto;
 }
 
 .service__container--img img {
@@ -220,11 +224,10 @@
   }
 
   .info__container {
-    flex-wrap: wrap;
+    width: 90%;
   }
 
   .info__container .card {
-    width: 50%;
     text-align: center;
   }
 
