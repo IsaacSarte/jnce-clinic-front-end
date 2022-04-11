@@ -68,7 +68,9 @@ const ShowLogs = () => {
                     </dl>
                 </div>
             </div>
-            <Footer />
+            <div className="admin__footer fixed bottom-0 w-full">
+                <Footer />
+            </div>
         </>
     )
 }
